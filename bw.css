@@ -1,0 +1,84 @@
+.background {
+  color: #ffffff;
+}
+
+.output{
+  padding: 0em 1em;
+  border: solid 1px #f7f7f7;
+}
+.warning {
+  padding: 0em 1em;
+  border: solid 1px #f7f7f7;
+}
+
+.error {
+  padding: 0em 1em;
+  border: solid 1px #f7f7f7;
+}
+
+.message {
+  padding: 0em 1em;
+  border: solid 1px #f7f7f7;
+}
+
+
+.keyword {
+  font-weight: bolder;
+  color: #000000;
+}
+.functioncall {
+  font-weight: bolder;
+  color: #202020;
+}
+
+
+.package {
+  font-weight: bolder;
+  color: #202020;
+}
+
+
+
+.argument {
+  color: #505050;
+}
+
+.formalargs {
+  color: #505050;
+}
+
+
+
+
+.assignement {
+  color: #303030;
+}
+
+.symbol {
+  color: #303030;
+}
+
+.prompt {
+  color: #303030;
+}
+
+
+.string {
+  color: #303030;
+}
+
+
+.comment {
+  font-style: italic;
+  color: #707070;
+}
+
+.roxygencomment {
+  font-style: italic;
+  color: #707070;
+}
+
+.slot {
+  font-style: italic;
+  color: #707070;
+}

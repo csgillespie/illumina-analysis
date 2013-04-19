@@ -1,0 +1,194 @@
+% !Rnw root = Cockell_main.Rnw
+\section{Loading Microarray Data into R}\label{SC2-sect:analysis}
+
+
+\subsection{Installing Bioconductor packages}
+
+Provided that R is already installed, than installing packages from the Bioconductor repository is straightforward. First we source the installation script:
+
+<<eval=FALSE>>=
+source("http://bioconductor.org/biocLite.R")
+@
+
+\noindent and then run the downloaded function, \texttt{biocLite}, to install the standard packages:
+
+<<eval=FALSE>>=
+biocLite()
+@
+
+\noindent This will install the \texttt{Biobase}, \texttt{IRanges} and \texttt{AnnotationDbi} packages (and their dependencies). Additional packages can be installed by directly specifying their name:
+
+<<eval=FALSE, tidy=FALSE>>=
+## From Bioconductor
+biocLite(c("ArrayExpress", "arrayQualityMetrics", "GOstats", "GEOquery",
+  "lumi", "lumiHumanAll.db", "lumiHumanIDMapping", "RamiGO"))
+## From CRAN
+install.packages("gplots")
+@
+
+\noindent Table \ref{Cockell_t3} gives an overview of the packages used in this chapter. A text file of the commands used can be found at
+\begin{center}
+\url{https://github.com/csgillespie/illuminia-analysis/}
+\end{center}
+
+
+\begin{table}[t]
+\centering
+\begin{tabular}{@{} llllll @{}}
+\toprule
+Package & Version & Package & Version & Package & Version\\
+\midrule
+ArrayExpress & \Sexpr{packageDescription("ArrayExpress")$Version}  &
+  arrayQualityMetrics & \Sexpr{packageDescription("arrayQualityMetrics")$Version}  &
+  Biobase & \Sexpr{packageDescription("Biobase")$Version}  \\
+GEOquery & \Sexpr{packageDescription("GEOquery")$Version} &
+  GOstats & \Sexpr{packageDescription("GOstats")$Version} &
+  gplots & \Sexpr{packageDescription("gplots")$Version} \\
+limma & \Sexpr{packageDescription("limma")$Version} &
+  lumi & \Sexpr{packageDescription("lumi")$Version}  &
+  lumiHumanAll.db & \Sexpr{packageDescription("lumiHumanAll.db")$Version} \\
+lumiHumanIDMapping & \Sexpr{packageDescription("lumiHumanIDMapping")$Version} &
+  RamiGO & \Sexpr{packageDescription("RamiGO")$Version} \\
+\bottomrule
+\end{tabular}
+\caption{Packages (and versions) used in this chapter.}\label{Cockell_t3}
+\end{table}
+
+
+
+
+<<echo=FALSE>>=
+#library(GEOquery)
+#loading Illumina data direct from GEO and ArrayExpress is not supported - so get the raw data & go from there as before
+#getGEO gets (usually) pre-normalised/processed data
+#getGEO('GSE26817')
+#so get the supplementary files - if you're lucky, there will be a file that lumiR can understand
+#getGEOSuppFiles('GSE26817')
+#gunzip('GSE26817/GSE26817_non-normalized.txt.gz')
+#geo_test = lumiR(fileName='GSE26817/GSE26817_non-normalized.txt')
+#an ArrayExpress example - again working from RAW data
+#library("ArrayExpress")
+#mtab606 = getAE("E-MTAB-606", type = "full")
+#ae_test = lumiR(mtab606$rawFiles)
+#pheno_data <- read.table(mtab606$sdrf, header=T, sep='\t')
+#in this case, the array labels don't match in the raw data vs the metadata
+
+@
+
+<<echo=FALSE, warning=FALSE,message=FALSE, cache=TRUE, results='hide'>>=
+library("GEOquery")
+library("lumi")
+raw_data = lumiR(fileName="data/raw_data.txt")
+@
+
+
+\subsection{Loading and normalising the data}
+
+The data for this chapter can be downloaded (within R) directly from the Array Express website. We simply load the \texttt{ArrayExpress} and \texttt{lumi} packages
+<<message=FALSE, warning=FALSE, cache=TRUE>>=
+library("ArrayExpress")
+library("lumi")
+@
+\noindent and use the \texttt{getAE} function to download the data file. Since the data is Illumina BeadArray, the standard \texttt{ArrayExpress} method will make some false assumptions, so we use \texttt{getAE} instead
+<<eval=FALSE>>=
+ae = getAE("E-MTAB-1593", type="full")
+raw_data = lumiR(ae)
+@
+\noindent The \texttt{raw\_data} object contains all the information associated with this microarray experiment. For example, the raw data, information on the protocol and details of the \texttt{MIAME} metadata. It is an S4 R \texttt{LumiBatch} object. This object is specifically used to contain and describe Illumina data within R. It extends \texttt{ExpressionSet}, one of the key Bioconductor classes. To investigate the \texttt{LumiBatch} object (or any R object), we can use the \texttt{str} command to obtain a detailed overview of its structure:
+
+<<results='hide', message=FALSE, warning=FALSE, cache=TRUE>>=
+str(raw_data)
+@
+
+\noindent Alternatively, we can get a short summary using \texttt{print(raw\_data)}.
+
+It is also desirable to use the \texttt{plot()} method to investigate some of the properties of the individual arrays. This quality control measure allows any obviously aberrant arrays to be detected and removed. There are a range of possible plots, including density plots of intensity (line graphs or boxplots), plots of pairwise correlation and a plot of the coefficient of variance.
+
+<<figure1, fig.keep='none', cache=TRUE, message=FALSE, tidy=FALSE>>=
+## Substitute "density" for one of the other plot types:
+## "boxplot", "pair", "MA" or "cv"
+plot(raw_data, what="density")
+@
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{graphics/figure1-crop}
+\caption{Top row: raw data. Bottom row: normalised. (a) Density plots. (b) Boxplots (c) PCA plots.}
+\label{Cockell_f1}
+\end{figure}
+
+\noindent Plots of the raw and normalised data are given in figure \ref{Cockell_f1}. As the density plots show, the intensity across the microarrays in our experiment can be quite varied (figure \ref{Cockell_f1}a). We can make a valid assumption here that this variance is experimental, and not biological. The result of this large amount of experimental variability is that it masks the biological variance in which we are interested. We therefore have to treat the data obtained from the arrays in such a way that this systematic variability is masked, while the important and interesting biological variability is maintained. Normalisation is intended to achieve this purpose by ensuring all the samples in an experiment follow the same underlying statistical distribution, but the variances within observations of a particular probe should remain, and therefore be discoverable.
+
+There is no \textit{single} method for normalising microarray data sets. In this chapter, we will use one of the standard methods. Normalisation is carried out over two steps. First, a transformation is applied to stabilise the variance across probes\cite{Lin01022008}:
+<<message=FALSE, warning=FALSE, results='hide', cache=TRUE>>=        
+vst_data = lumiT(raw_data)
+@
+
+\noindent The variance stabilization transformation exploits the within-array technical replicates (i.e. the bead-level data) generated from Illumina microarrays to model the relationship between the mean and the variance. Using VST means the differential expression of more genes can be detected at the same time as reducing false positives\cite{Lin01022008}. Other (less sophisticated) methods are a $\log_2$ and cubic root transformation.
+
+The second step is to normalise between chips
+<<message=FALSE, warning=FALSE, results='hide', cache=TRUE>>=        
+##Use robust spline normalisation (rsn)
+rsn_data = lumiN(vst_data, method="rsn")
+@
+\noindent This normalisation step uses the \texttt{rsn} method and forces the intensity values for different samples (microarrays) to have the same distribution\cite{Du01072008}.
+
+When the raw data is loaded, the \texttt{lumiQ} function is automatically called to proved a list of summary data about the arrays that stored in the QC slot of the \texttt{LumiBatch} object. Following normalisation this function needs to be called again to update the data in the QC slot to reflect changes in the underlying data, viz.
+<<message=FALSE, warning=FALSE, results='hide', cache=TRUE>>=
+qc_data = lumiQ(rsn_data)
+@
+\noindent Information held in the QC slot includes the mean, standard deviation, detectable probe ratios and sample correlation data, in addition to control probe information for each array. The subsequent S4 plot methods used to render QC plots are also dependent on the data in the QC slot of the \texttt{LumiBatch} object.
+
+The raw and transformed data can be easily compared via plotting:
+<<fig.keep='none', cache=TRUE, message=FALSE, tidy=FALSE>>=
+plot(qc_data)
+plot(raw_data)
+@
+
+
+
+
+\subsection{Quality Control}
+
+The \texttt{arrayQualityMetrics} package is a generic set of quality control routines that can be applied to many types of array data. It produces a report of quality metrics, which can be used to make assessments about overall array quality, and diagnose batch effects. To generate the report, we load the package
+<<SC_analysis_QC1, message=FALSE>>=
+library(arrayQualityMetrics)
+@
+\noindent then run the \texttt{arrayQualityMetrics} function
+<<SC_analysis_QC2, eval=FALSE, tidy=FALSE>>=
+arrayQualityMetrics(expressionset=qc_data, outdir="qc")
+ @
+\noindent You can view the output from the \texttt{arrayQualityMetrics} function at
+\begin{center}
+\url{https://github.com/csgillespie/illuminia-analysis/}
+\end{center}
+Examining the \textit{distance between arrays} metric and the principal component plot from the report (the latter figure is given in figure \ref{Cockell_f1}), strongly suggests that array twenty-three (\texttt{TF3TF4B}) is an outlier - so we will remove this array from any further analysis. We have to do this removal in the raw data, since the removal of any whole sample will effect our between-array normalisation, so this has to be repeated with the subset of twenty-three arrays that passed quality control:
+<<SC_analysis_reload, warning=FALSE, results='hide', cache=TRUE>>=
+raw_data_post = raw_data[ ,-23]
+vst_data_post = lumiT(raw_data_post)
+rsn_data_post = lumiN(vst_data_post, method="rsn")
+qc_data_post = lumiQ(rsn_data_post)
+@
+\noindent The \textit{array intensity distributions} (not shown) metric suggests that array eleven may also be an outlier, although in this case it's variation from the other arrays is less convincing, so we will retain the array in the analysis.
+
+Now that we can be confident the arrays we have retained are of sufficient quality, we want to ensure the probes we are analysing on those arrays also pass a stringent quality check. We begin by extracting the data matrix from the \texttt{LumiBatch} object:
+<<SC_analysis_sampleQC1, cache=TRUE, tidy=FALSE>>=
+exprs_data = exprs(qc_data_post)
+treatments = c("Ctrl", "TF1", "TF2", "TF3", "TF4", "TF1TF4",
+                                                     "TF2TF4", "TF3TF4")
+array_names = rep(treatments, each=3)[1:23]
+colnames(exprs_data) = array_names
+@
+\label{qc:probe_qc}
+\noindent Then we use the \texttt{detectionCall} to find the probes that are below a detection threshold.
+<<SC_analysis_sampleQC2, cache=TRUE, tidy=FALSE>>=
+present_count = detectionCall(raw_data_post)
+select_data = exprs_data[present_count > 0, ]
+@
+\noindent This method exploits the detection $p$-value found in the raw data to determine whether or not a probe is detected above a threshold level in each of the samples of our experiment. If the detection $p$-value is less than 0.01 (by default, this can be changed by passing the \texttt{Th=} parameter to \texttt{detectionCall}), then the probe is found to be detected. The filter that is applied at this stage removes a probe from all the samples if it is not detected on any of the twenty-tree arrays. A probe that is detected on at least one array is retained.
+
+Overall, this procedure has removed approximately 50\% of probes:
+<<cache=TRUE>>=
+nrow(select_data)/nrow(exprs_data)
+@
+

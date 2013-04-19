@@ -30,3 +30,11 @@
 *.vrb
 *.xdy
 *.tdo
+.Rproj.user
+*section.tex
+Cockell_main.tex
+Makefile
+cache
+data
+illuminia-analysis.Rproj
+README.html

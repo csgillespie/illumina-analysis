@@ -1,0 +1,223 @@
+@article{Johnson01012007,
+author = {Johnson, W. Evan and Li, Cheng and Rabinovic, Ariel}, 
+title = {Adjusting batch effects in microarray expression data using empirical Bayes methods},
+volume = {8}, 
+number = {1}, 
+pages = {118-127}, 
+year = {2007}, 
+doi = {10.1093/biostatistics/kxj037}, 
+abstract ={Non-biological experimental variation or “batch effects" are commonly observed across multiple batches of microarray experiments, often rendering the task of combining data from these batches difficult. The ability to combine microarray data sets is advantageous to researchers to increase statistical power to detect biological phenomena from studies where logistical considerations restrict sample size or in studies that require the sequential hybridization of arrays. In general, it is inappropriate to combine data sets without adjusting for batch effects. Methods have been proposed to filter batch effects from data, but these are often complicated and require large batch sizes () to implement. Because the majority of microarray studies are conducted using much smaller sample sizes, existing methods are not sufficient. We propose parametric and non-parametric empirical Bayes frameworks for adjusting data for batch effects that is robust to outliers in small sample sizes and performs comparable to existing methods for large samples. We illustrate our methods using two example data sets and show that our methods are justifiable, easy to apply, and useful in practice. Software for our method is freely available at: http://biosun1.harvard.edu/complab/batch/.}, 
+URL = {http://biostatistics.oxfordjournals.org/content/8/1/118.abstract}, 
+eprint = {http://biostatistics.oxfordjournals.org/content/8/1/118.full.pdf+html}, 
+journal = {Biostatistics} 
+}
+
+@article{Leek17012012,
+author = {Leek, Jeffrey T. and Johnson, W. Evan and Parker, Hilary S. and Jaffe, Andrew E. and Storey, John D.}, 
+title = {The sva package for removing batch effects and other unwanted variation in high-throughput experiments},
+year = {2012}, 
+doi = {10.1093/bioinformatics/bts034}, 
+abstract ={Summary: Heterogeneity and latent variables are now widely recognized as major sources of bias and variability in high-throughput experiments. The most well-known source of latent variation in genomic experiments are batch effects - when samples are processed on different days, in different groups, or by different people. However, there are also a large number of other variables that may have a major impact on high-throughput measurements. Here we describe the sva package for identifying, estimating, and removing unwanted sources of variation in high-throughput experiments. The sva package supports surrogate variable estimation with the sva function, direct adjustment for known batch effects with the ComBat function, and adjustment for batch and latent variables in prediction problems with the fsva function.Availability: The R package sva is freely available from http://www.bioconductor.org.Contact: jleek@jhsph.edu}, 
+URL = {http://bioinformatics.oxfordjournals.org/content/early/2012/01/17/bioinformatics.bts034.abstract}, 
+eprint = {http://bioinformatics.oxfordjournals.org/content/early/2012/01/17/bioinformatics.bts034.full.pdf+html}, 
+journal = {Bioinformatics} 
+}
+
+@article{Hong15112006,
+author = {Hong, Fangxin and Breitling, Rainer and McEntee, Connor W. and Wittner, Ben S. and Nemhauser, Jennifer L. and Chory, Joanne}, 
+title = {RankProd: a bioconductor package for detecting differentially expressed genes in meta-analysis},
+volume = {22}, 
+number = {22}, 
+pages = {2825-2827}, 
+year = {2006}, 
+doi = {10.1093/bioinformatics/btl476}, 
+abstract ={Summary: While meta-analysis provides a powerful tool for analyzing microarray experiments by combining data from multiple studies, it presents unique computational challenges. The Bioconductor package RankProd provides a new and intuitive tool for this purpose in detecting differentially expressed genes under two experimental conditions. The package modifies and extends the rank product method proposed by Breitling et al., [(2004)FEBS Lett., 573, 83–92] to integrate multiple microarray studies from different laboratories and/or platforms. It offers several advantages over t-test based methods and accepts pre-processed expression datasets produced from a wide variety of platforms. The significance of the detection is assessed by a non-parametric permutation test, and the associated P-value and false discovery rate (FDR) are included in the output alongside the genes that are detected by user-defined criteria. A visualization plot is provided to view actual expression levels for each gene with estimated significance measurements.Availability: RankProd is available at Bioconductor http://www.bioconductor.org. A web-based interface will soon be available at http://cactus.salk.edu/RankProdContact:fhong@salk.eduSupplementary information: Supplementary data are available at Bioinformatics online.}, 
+URL = {http://bioinformatics.oxfordjournals.org/content/22/22/2825.abstract}, 
+eprint = {http://bioinformatics.oxfordjournals.org/content/22/22/2825.full.pdf+html}, 
+journal = {Bioinformatics} 
+}
+
+@article{Wilson15092005,
+author = {Wilson, Claire L. and Miller, Crispin J.}, 
+title = {Simpleaffy: a BioConductor package for Affymetrix Quality Control and data analysis},
+volume = {21}, 
+number = {18}, 
+pages = {3683-3685}, 
+year = {2005}, 
+doi = {10.1093/bioinformatics/bti605}, 
+abstract ={Summary: Quality Control is a fundamental aspect of successful microarray data analysis. Simpleaffy is a BioConductor package that provides access to a variety of QC metrics for assessing the quality of RNA samples and of the intermediate stages of sample preparation and hybridization. Simpleaffy also offers fast implementations of popular algorithms for generating expression summaries and detection calls.Availability: Simpleaffy can be downloaded from http://www.bioconductor.orgContact: cmiller@picr.man.ac.ukSupplementary information: Additional information can be found on the supplementary website located at http://bioinformatics.picr.man.ac.uk}, 
+URL = {http://bioinformatics.oxfordjournals.org/content/21/18/3683.abstract}, 
+eprint = {http://bioinformatics.oxfordjournals.org/content/21/18/3683.full.pdf+html}, 
+journal = {Bioinformatics} 
+}
+
+@Article{affy,
+    author = {Laurent Gautier and Leslie Cope and Benjamin M. Bolstad and Rafael A. Irizarry},
+    title = {affy---analysis of Affymetrix GeneChip data at the probe level},
+    journal = {Bioinformatics},
+    volume = {20},
+    number = {3},
+    year = {2004},
+    issn = {1367-4803},
+    pages = {307--315},
+    doi = {http://dx.doi.org/10.1093/bioinformatics/btg405},
+    publisher = {Oxford University Press},
+    address = {Oxford, UK}
+}
+
+@Article{Lin01022008,
+author = {Lin, Simon M. and Du, Pan and Huber, Wolfgang and Kibbe, Warren A.}, 
+title = {Model-based variance-stabilizing transformation for Illumina microarray data},
+volume = {36}, 
+number = {2}, 
+pages = {e11}, 
+year = {2008}, 
+doi = {10.1093/nar/gkm1075}, 
+abstract ={Variance stabilization is a step in the preprocessing of microarray data that can greatly benefit the performance of subsequent statistical modeling and inference. Due to the often limited number of technical replicates for Affymetrix and cDNA arrays, achieving variance stabilization can be difficult. Although the Illumina microarray platform provides a larger number of technical replicates on each array (usually over 30 randomly distributed beads per probe), these replicates have not been leveraged in the current log2 data transformation process. We devised a variance-stabilizing transformation (VST) method that takes advantage of the technical replicates available on an Illumina microarray. We have compared VST with log2 and Variance-stabilizing normalization (VSN) by using the Kruglyak bead-level data (2006) and Barnes titration data (2005). The results of the Kruglyak data suggest that VST stabilizes variances of bead-replicates within an array. The results of the Barnes data show that VST can improve the detection of differentially expressed genes and reduce false-positive identifications. We conclude that although both VST and VSN are built upon the same model of measurement noise, VST stabilizes the variance better and more efficiently for the Illumina platform by leveraging the availability of a larger number of within-array replicates. The algorithms and Supplementary Data are included in the lumi package of Bioconductor, available at: www.bioconductor.org.}, 
+URL = {http://nar.oxfordjournals.org/content/36/2/e11.abstract}, 
+eprint = {http://nar.oxfordjournals.org/content/36/2/e11.full.pdf+html}, 
+journal = {Nucleic Acids Research} 
+}
+
+@article{Ashburner:2000ja,
+author = {Ashburner, M and Ball, C A and Blake, J A and Botstein, D and Butler, H and Cherry, J M and Davis, A P and Dolinski, K and Dwight, S S and Eppig, J T and Harris, M A and Hill, D P and Issel-Tarver, L and Kasarskis, A and Lewis, S and Matese, J C and Richardson, J E and Ringwald, M and Rubin, G M and Sherlock, G},
+title = {{Gene ontology: tool for the unification of biology. The Gene Ontology Consortium.}},
+journal = {Nature Genetics},
+year = {2000},
+volume = {25},
+number = {1},
+pages = {25--29},
+month = may
+}
+
+
+
+@Article{Du01072008,
+author = {Du, Pan and Kibbe, Warren A. and Lin, Simon M.}, 
+title = {lumi: a pipeline for processing Illumina microarray},
+volume = {24}, 
+number = {13}, 
+pages = {1547-1548}, 
+year = {2008}, 
+doi = {10.1093/bioinformatics/btn224}, 
+abstract ={Summary: Illumina microarray is becoming a popular microarray platform. The BeadArray technology from Illumina makes its preprocessing and quality control different from other microarray technologies. Unfortunately, most other analyses have not taken advantage of the unique properties of the BeadArray system, and have just incorporated preprocessing methods originally designed for Affymetrix microarrays. lumi is a Bioconductor package especially designed to process the Illumina microarray data. It includes data input, quality control, variance stabilization, normalization and gene annotation portions. In specific, the lumi package includes a variance-stabilizing transformation (VST) algorithm that takes advantage of the technical replicates available on every Illumina microarray. Different normalization method options and multiple quality control plots are provided in the package. To better annotate the Illumina data, a vendor independent nucleotide universal identifier (nuID) was devised to identify the probes of Illumina microarray. The nuID annotation packages and output of lumi processed results can be easily integrated with other Bioconductor packages to construct a statistical data analysis pipeline for Illumina data.Availability: The lumi Bioconductor package, www.bioconductor.orgContact: dupan@northwestern.edu}, 
+URL = {http://bioinformatics.oxfordjournals.org/content/24/13/1547.abstract}, 
+eprint = {http://bioinformatics.oxfordjournals.org/content/24/13/1547.full.pdf+html}, 
+journal = {Bioinformatics} 
+}
+
+@article{Gentleman04,
+author = {Gentleman, Robert C and Carey, Vincent J and Bates, Douglas M and Bolstad, Ben and Dettling, Marcel and Dudoit, Sandrine and Ellis, Byron and Gautier, Laurent and Ge, Yongchao and Gentry, Jeff and Hornik, Kurt and Hothorn, Torsten and Huber, Wolfgang and Iacus, Stefano and Irizarry, Rafael and Leisch, Friedrich and Li, Cheng and Maechler, Martin and Rossini, Anthony J and Sawitzki, Gunther and Smith, Colin and Smyth, Gordon and Tierney, Luke and Yang, Jean YH and Zhang, Jianhua},
+title = {{Bioconductor: open software development for computational biology and bioinformatics}},
+journal = {Genome Biology},
+year = {2004},
+volume = {5},
+number = {10},
+pages = {R80}
+}
+
+@article{Gunderson04,
+author = {Gunderson, K L},
+title = {{Decoding Randomly Ordered DNA Arrays}},
+journal = {Genome Research},
+year = {2004},
+volume = {14},
+number = {5},
+pages = {870--877},
+month = may
+}
+
+@article{Kuhn04,
+author = {Kuhn, K},
+title = {{A novel, high-performance random array platform for quantitative gene expression profiling}},
+journal = {Genome Research},
+year = {2004},
+volume = {14},
+number = {11},
+pages = {2347--2356},
+month = nov
+}
+
+@article{Smyth04,
+author = {Smyth, Gordon K},
+title = {{Linear models and empirical bayes methods for assessing differential expression in microarray experiments.}},
+journal = {Statistical Applications in Genetics and Molecular Biology},
+year = {2004},
+volume = {3},
+pages = {Article3}
+}
+
+@article{Smyth05,
+author = {Smyth, Gordon K and Michaud, Jo{\"e}lle and Scott, Hamish S},
+title = {{Use of within-array replicate spots for assessing differential expression in microarray experiments}},
+journal = {Bioinformatics},
+volume = {21},
+number = {9},
+pages = {2067--2075},
+month = may,
+year = {2005}
+}
+
+@article{Du07,
+author = {Du, Pan and Kibbe, Warren A and Lin, Simon M},
+title = {{nuID: a universal naming scheme of oligonucleotides for Illumina, Affymetrix, and other microarrays.}},
+journal = {Biology Direct},
+year = {2007},
+volume = {2},
+pages = {16}
+}
+
+@article{Rustici:2013ul,
+author = {Rustici, Gabriella and Kolesnikov, Nikolay and Brandizi, Marco and Burdett, Tony and Dylag, Miroslaw and Emam, Ibrahim and Farne, Anna and Hastings, Emma and Ison, Jon and Keays, Maria and Kurbatova, Natalja and Malone, James and Mani, Roby and Mupo, Annalisa and Pereira, Rui Pedro and Pilicheva, Ekaterina and Rung, Johan and Sharma, Anjan and Tang, Y Amy and Ternent, Tobias and Tikhonov, Andrew and Welter, Danielle and Williams, Eleanor and Brazma, Alvis and Parkinson, Helen and Sarkans, Ugis},
+title = {{ArrayExpress update - trends in database growth and links to data analysis tools}},
+journal = {Nucleic Acids Research},
+year = {2013}
+}
+
+@article{Kauffmann:2009tm,
+author = {Kauffmann, Audrey and Rayner, Tim F and Parkinson, Helen and Kapushesky, Misha and Lukk, Margus and Brazma, Alvis and Huber, Wolfgang},
+title = {{Importing ArrayExpress datasets into R/Bioconductor.}},
+journal = {Bioinformatics},
+year = {2009},
+volume = {25},
+number = {16},
+pages = {2092--2094},
+month = aug
+}
+
+@article{Falcon15012007,
+author = {Falcon, S. and Gentleman, R.}, 
+title = {Using GOstats to test gene lists for GO term association},
+volume = {23}, 
+number = {2}, 
+pages = {257-258}, 
+year = {2007}, 
+doi = {10.1093/bioinformatics/btl567}, 
+abstract ={Motivation: Functional analyses based on the association of Gene Ontology (GO) terms to genes in a selected gene list are useful bioinformatic tools and the GOstats package has been widely used to perform such computations. In this paper we report significant improvements and extensions such as support for conditional testing.Results: We discuss the capabilities of GOstats, a Bioconductor package written in R, that allows users to test GO terms for over or under-representation using either a classical hypergeometric test or a conditional hypergeometric that uses the relationships among GO terms to decorrelate the results.Availability: GOstats is available as an R package from the Bioconductor project: http://bioconductor.orgContact:sfalcon@fhcrc.org}, 
+URL = {http://bioinformatics.oxfordjournals.org/content/23/2/257.abstract}, 
+eprint = {http://bioinformatics.oxfordjournals.org/content/23/2/257.full.pdf+html}, 
+journal = {Bioinformatics} 
+}
+
+@techreport{Report02,
+  author  = "P.Q. Xyz and Z.R. Abcde",
+  title   = "A fast processing procedure",
+  institution = "Our University",
+  year    = "2002",
+  number  = "ID 6502",
+  month   = "March",
+  address = "San Antonio, USA",
+}
+
+@article{Benjamini1995,
+  title={Controlling the false discovery rate: a practical and powerful approach to multiple testing},
+  author={Benjamini, Yoav and Hochberg, Yosef},
+  journal={Journal of the Royal Statistical Society. Series B (Methodological)},
+  pages={289--300},
+  year={1995},
+  publisher={JSTOR}
+}
+
+
+
+

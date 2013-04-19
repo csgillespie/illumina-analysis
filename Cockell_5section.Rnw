@@ -1,0 +1,109 @@
+% !Rnw root = Cockell_main.Rnw
+
+\section{GOstats}
+
+The functional relationship of the genes in our lists can be studied more directly by using the \texttt{GOstats} package\cite{Falcon15012007} to find Gene Ontology\cite{Ashburner:2000ja} terms that are statistically over-represented among the genes in the lists. To begin, we load the package
+
+<<message=FALSE, warning=FALSE, tidy=FALSE, cache=TRUE>>=
+library(GOstats)
+@
+\noindent and then select the "top genes"
+<<message=FALSE, warning=FALSE, tidy=FALSE, cache=TRUE>>=
+sig_values = tf1_table[tf1_table$adj.P.Val < 0.05 & 
+                         abs(tf1_table$logFC) > log2(1.5), ]
+sig_probes = as.character(sig_values$probe_list)
+@
+\noindent Then we map our list significant probes to Entrez gene identifiers (as these are the identifiers GOstats uses to find GO terms)
+<<message=FALSE, warning=FALSE, tidy=FALSE, cache=TRUE>>=
+## Map probe id to Entrez gene identifiers
+entrez = unique(unlist(lookUp(nuIDs[sig_probes], 
+                               "lumiHumanAll.db", "ENTREZID")))
+entrez = as.character(entrez[!is.na(entrez)])
+@
+\noindent We also need to define a "gene universe", that is, the global set of terms among which we want to look for over-representation. If a particular GO term is not present in the genes represented on our microarray, then there is no point in testing to see  if it is over-represented. In this case, we construct our universe from the probes on the arrays that passed our probe-level quality control step \ref{qc:probe_qc}.
+<<message=FALSE, warning=FALSE, tidy=FALSE, cache=TRUE>>=
+## Determine the universe of possible entrez ids
+entrez_universe = unique(unlist(
+                    lookUp(nuIDs, "lumiHumanAll.db", "ENTREZID")))
+entrez_universe = as.character(entrez_universe[!is.na(entrez_universe)])
+@
+\noindent To test whether a particular probe is over-represented, we use a hyper-geometric test; this is provided by the \texttt{GOstats} package. We create an S4 object that contains all the necessary information
+<<message=FALSE, warning=FALSE, tidy=FALSE, cache=TRUE>>=
+params = new("GOHyperGParams",
+ geneIds=entrez,
+ universeGeneIds=entrez_universe,
+ annotation="lumiHumanAll.db",
+ ontology="BP",
+ pvalueCutoff= 0.01,
+ conditional=FALSE,
+ testDirection="over")
+@
+\noindent The \texttt{params} object is then passed to the \texttt{hyperGTest} function
+<<message=FALSE, warning=FALSE, tidy=FALSE, cache=TRUE>>=
+hyperg_result = hyperGTest(params)
+@
+\noindent which returns a \texttt{GOHyperGResult} object. Printing this object, provides a summary of the results
+<<cache=TRUE>>=
+print(hyperg_result)
+@
+\noindent Since we have performed multiple tests, we use the adjusted $p$-values 
+<<message=FALSE, warning=FALSE, tidy=FALSE, cache=TRUE>>=
+## Adjust p-values for multiple test (FDR)
+go_fdr = p.adjust(pvalues(hyperg_result), method="fdr")
+@
+\noindent We can then select the significant GO terms
+<<message=FALSE, warning=FALSE, tidy=FALSE, cache=TRUE>>=
+## Select the Go terms with adjusted p-value less than 0.01
+sig_go_id = names(go_fdr[go_fdr < 0.01])
+## Retrieve significant GO terms for BP (Molecular Function)
+sig_go_term = getGOTerm(sig_go_id)[["BP"]]
+@
+\noindent The top five gene ontology identifiers are given in table \ref{Cockell_T2}.
+
+<<echo=FALSE, cache=TRUE>>=
+##Preparing data for the table
+col1 = sig_go_id[1:5]
+##Capitialise first letter
+col2 = as.vector(sapply(sig_go_term[sig_go_id[1:5]], simple_cap))
+
+##Put univerise in brackets
+col3 = summary(hyperg_result)[1:5,]$Count
+col3 = paste0(col3, "(")
+col3 = paste0(col3, summary(hyperg_result)[1:5,]$Size)
+col3 = paste0(col3, ")")
+##Format scientific 
+col4 = sapply(go_fdr[sig_go_id[1:5]], sn, 2)
+@
+
+
+\begin{table}[t]
+\centering
+\begin{tabular}{@{} llll @{}}
+\toprule
+GO Identifier & Description & Occurrences (Universe size) & $p$-value \\
+\midrule
+\Sexpr{col1[1]} & \Sexpr{col2[1]} & \Sexpr{col3[1]} & $\Sexpr{col4[1]}$ \\
+\Sexpr{col1[2]} & \Sexpr{col2[2]} & \Sexpr{col3[2]} & $\Sexpr{col4[2]}$ \\
+\Sexpr{col1[3]} & \Sexpr{col2[3]} & \Sexpr{col3[3]} & $\Sexpr{col4[3]}$ \\
+\Sexpr{col1[4]} & \Sexpr{col2[4]} & \Sexpr{col3[4]} & $\Sexpr{col4[4]}$ \\
+\Sexpr{col1[5]} & \Sexpr{col2[5]} & \Sexpr{col3[5]} & $\Sexpr{col4[5]}$ \\
+\bottomrule
+\end{tabular}
+\caption{Top five gene ontology identifiers with a brief description.}\label{Cockell_T2}
+\end{table}
+
+
+Once we have a list of over-represented terms, we can use the \texttt{RamiGO} package to visualise them. \texttt{RamiGO} takes a list of terms and constructs a graph from them, and their parent terms. 
+
+<<eval=FALSE, cache=TRUE>>=
+#Visualize the enriched GO categories
+library(RamiGO)
+amigo_tree = getAmigoTree(sig_go_id)
+@
+
+\noindent The resulting graph can be examined for clusters of related enriched terms, which may be more important for the context of the experiment than isolated over-represented terms would be. The graph can be found on this chapter's website.
+
+
+As we can see from the top GO terms for this contrast in table \ref{Cockell_T2} (and the Biological Process graph produced by RamiGO), knocking down the expression of TF1 has had a demonstrable effect on a number of processes related to the progression of the cell cycle. We may simply hypothesise, therefore, that TF1 is an important regulator of these processes. Similar analyses with the other contrasts we have performed allow us to draw similar conclusions as to the function of the other knocked-down transcription factors. The top GO terms for each of these other transcription factor knockdowns also contain a lot of terms indicating involvement of those transcription factors in the cell cycle, suggesting that all of the transcription factors being studied are involved with this important process.
+
+\texttt{GOstats} can also be used to investigate statistical enrichment of other functional classifications, for example, the other categories of the Gene Ontology (Molecular Function and Cellular Component) or pathway data, taken from the Kyoto Encyclopedia of Genes and Genomes (KEGG). It is therefore possible to build up a very rich picture of the functions of our lists of genes in this way.

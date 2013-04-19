@@ -1,0 +1,151 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   LaTeX files for
+%
+%   {Bioconductor Tools for Microarray Analysis}
+%
+%   by {Simon Cockell, Matthew Bashton and Colin S. Gillespie}
+%
+%   Chapter to appear in
+%   ``Microarray Image and Data Analysis: Theory and Practice,''
+%    CRC Press, Luis Rueda (Editor)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[twoside,11pt]{book}
+\bibliographystyle{ieeetr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 PACKAGES                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage{epsf,psfig}
+\usepackage{latexsym}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+%\usepackage[pdftex]{graphicx}
+%\usepackage[pdftex,draft]{graphicx}
+\usepackage[pdftex]{hyperref}
+\DeclareGraphicsExtensions{.jpg,.pdf,.tif,.png,.eps}
+\usepackage{makeidx}
+\usepackage{subfigure}
+
+%Alter margins around knitr R output
+\usepackage{etoolbox}
+\makeatletter
+\preto{\@verbatim}{\topsep=-20pt \partopsep=0pt }
+\makeatother
+
+%For tables
+\usepackage{booktabs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       PAGE LAYOUT  -  Do Not Modify        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\textwidth}{6.5 in}
+\setlength{\evensidemargin}{0.000 in}
+\setlength{\oddsidemargin}{0.000 in}
+\setlength{\textheight}{9.50 in}
+\setlength{\topmargin}{-0.50 in}
+\renewcommand{\baselinestretch}{1.5}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%knitr settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<<setup, include=FALSE, cache=FALSE>>=
+#options(replace.assign=TRUE,width=60)
+opts_chunk$set(fig.path='graphics/Cockell-', cache.path='cache/graphics-', fig.align='center', fig.height=3, tidy.opts=list(width.cutoff=60))
+
+old_par = par(mfrow=c(1,1))
+options(width=60)
+  ##Formating for the table. Not used yet
+  sn = function(x,digits) {
+    if (x==0) return("0")
+    ord = floor(log(abs(x),10))
+    x = x / 10^ord
+    if (!missing(digits)) x = format(x,digits=digits)
+    if (ord==0) return(as.character(x))
+    paste(x,"\\times 10^{",ord,"}",sep="")
+  }
+
+##Tables should be format on the decimal place
+##Change 
+format_dp = function(x, digits) {
+  x = format(x, digits=digits)
+  gsub("\\.", "&", x)
+}
+
+simple_cap = function(x) {
+    s = strsplit(x, " ")[[1]]
+    s[1] = paste(toupper(substring(s[1], 1, 1)), substring(s[1], 2),
+          sep = "", collapse = " ")
+    paste(s, collapse=" ")
+}
+
+
+knit_theme$set("bw.css")
+@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%              PAGE HEADINGS                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{myheadings} \markboth{\small Microarray Image and Data Analysis: 
+Theory and Practice} {\small Bioconductor Tools for Microarray Analysis}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               DOCUMENT                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeindex
+\begin{document}
+%Type your names, affiliations, and chapter title
+\chapter{Bioconductor Tools for Microarray Analysis}
+{\Large
+\textsc{Simon Cockell}\\[3mm]
+Bioinformatics Support Unit\\
+Newcastle University \\
+Newcastle upon Tyne, UK \\
+\texttt{Email: simon.cockell@newcastle.ac.uk}
+\medskip
+
+\noindent\textsc{Matthew Bashton}\\[3mm]
+Bioinformatics Support Unit\\
+Newcastle University \\
+Newcastle upon Tyne, UK \\
+\texttt{Email: matthew.bashton@newcastle.ac.uk}
+\medskip
+
+\noindent\textsc{Colin S. Gillespie}\\[3mm]
+School of Mathematics \& Statistics\\
+Newcastle University\\
+Newcastle upon Tyne, UK \\
+\texttt{Email: colin.gillespie@newcastle.ac.uk}
+} % End
+
+\thispagestyle{empty} \vskip 10pt \hrule width \textwidth height
+1.5pt \vskip 10pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%        Chapter files and sections          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{Author1surname_macros}          % Macros used in chapter (if any)
+\Sexpr{knit_child('Cockell_1section.Rnw')} %intro
+\Sexpr{knit_child('Cockell_2section.Rnw')} %Loading and normalising
+\Sexpr{knit_child('Cockell_3section.Rnw')} %limma
+\Sexpr{knit_child('Cockell_4section.Rnw')} %Visualising DE genes
+\Sexpr{knit_child('Cockell_5section.Rnw')} %GOstats
+\Sexpr{knit_child('Cockell_6section.Rnw')} %Summary
+\newpage
+% \Sexpr{knit_child('graphics_code.Rnw')} %Generate the plots explicitly
+% 
+
+{\small \itemsep=-.2cm \bibliography{Cockell_bibtexfile}} % Bibliography
+
+{\footnotesize \itemsep=-.2cm \printindex } % Index
+\end{document}

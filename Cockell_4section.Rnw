@@ -1,0 +1,137 @@
+% !Rnw root = Cockell_main.Rnw
+\section{Visually investigating differences}
+
+When dealing with so many data points, it can be useful to get a visual overview to quickly identify particularly interesting genes. In this section, we consider three standard graphical methods.
+
+
+\subsection{Volcano plots}
+
+
+When looking for interesting genes it can be helpful to restrict
+attention to differentially expressed genes that are both statistically
+significant and of potential biological interest. This objective can be achieved
+by considering only significant genes which show, say, at least a
+two-fold change in their expression level. A volcano plot can be used to summarise the fold change and $p$-value information produced by \texttt{limma}, the log fold change is plotted on the x-axis and the negative $\log_{10} p$-value is plotted on the y-axis. 
+
+To construct the plot, extract all genes, with associated $p$-value and fold change for a particular contrast,
+
+<<cache=TRUE>>=
+gene_list = topTable(fit2, coef="TF1 - Ctrl", number=nrow(anno_df))
+@
+\noindent The volcano plot is created using the standard plotting function
+
+<<figure2, fig.keep='none', cache=TRUE, tidy=FALSE>>=
+plot(gene_list$logFC, -log10(gene_list$adj.P.Val), 
+     col=1+(abs(gene_list$logFC) > 1 & gene_list$adj.P.Val < 0.05))
+@
+\noindent In this plot, we use the \texttt{col} argument to colour points where the adjusted $p$-value was less than 0.05 and the absolute log fold change was above one. Figure \ref{Cockell_F2} shows volcano plots for three particular contrasts. 
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{graphics/figure2-crop}
+\caption{Volcano plots. The purple triangles indicate genes whose $\log_2$ absolute fold change is greater than one and has an adjust $p$-value greater than 0.05. The figures above are volcano plots for the contrasts (a) \texttt{TF1 - Ctrl} (b) \texttt{TF4 - Ctrl} (c) \texttt{TF1TF4 - TF1 - TF4 + Ctrl}.}\label{Cockell_F2}
+\end{figure}
+
+
+\subsection{Venn Diagrams}
+
+%this needs better description
+
+Typically when comparing interesting genes over different contrasts, we often are interested in the gene overlap. The function \texttt{classifyTestsF} from the \texttt{limma} package classifies each gene as being up, down or not significant. In this example, we choose a $p$-value cut-off of $0.01$
+<<cache=TRUE>>=
+##P-values are adjusted for multiple testing
+results = classifyTestsP(fit2, p.value=0.01, method="fdr")
+@
+\noindent When classifying the tests, we control for multiple testing using the FDR correction\cite{Benjamini1995}. The results can then be visualised using a Venn diagram
+<<cache=TRUE, fig.keep='none', tidy=FALSE>>=
+vennDiagram(results[, c("TF1 - Ctrl", "TF4 - Ctrl", 
+                        "TF1TF4 - TF1 - TF4 + Ctrl")])
+@
+\noindent This commands generates figure \ref{Cockell_F3}a.
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{graphics/figure3-crop}
+\caption{Venn diagrams showing the number over overlapping genes between contrasts.}\label{Cockell_F3}
+\end{figure}
+
+\subsection{Heatmaps}
+
+Lists of genes that change expression are of limited value taken on their own. What is needed to provide more value to these lists is context. We can look at how the genes that change in one of our contrasts is affected in all the others by constructing a heatmap of the fold changes found in each of the contrasts. This visual tools allows us to quickly identify genes that are similarly regulated across conditions, or those that have opposing regulation. Due to the probe-level clustering that is applied during heatmap construction, we can also spot groups of genes that are regulated in similar ways across the constrasts. Genes that share regulation in this way are often functionally related.
+
+In order to construct this plot, we first need the full results of the four contrasts we are plotting.
+
+<<cache=TRUE, tidy=FALSE>>=
+tf1_table = topTable(fit2, coef="TF1 - Ctrl", n=length(probe_list), 
+                     sort.by="logFC")
+tf2_table = topTable(fit2, coef="TF2 - Ctrl", n=length(probe_list), 
+                     sort.by="logFC")
+tf3_table = topTable(fit2, coef="TF3 - Ctrl", n=length(probe_list), 
+                     sort.by="logFC")
+tf4_table = topTable(fit2, coef="TF4 - Ctrl", n=length(probe_list), 
+                     sort.by="logFC")
+@
+\noindent Now we construct a list of the top ten genes from each contrast (sorted on fold change). From each gene table we take the top ten genes, then select the unique probes, since the same probe may occur in more than one list
+
+<<cache=TRUE, tidy=FALSE>>=
+all_signames = unique(c(rownames(tf1_table[1:10,]), 
+                        rownames(tf2_table[1:10,]), 
+                        rownames(tf3_table[1:10,]), 
+                        rownames(tf4_table[1:10,])))
+@
+
+\noindent Now that we have a list of genes, we extract these genes from each data frame 
+<<cache=TRUE, tidy=FALSE>>=
+full = data.frame(tf1_table[all_signames,]$logFC, 
+                  tf2_table[all_signames,]$logFC,
+                  tf3_table[all_signames,]$logFC, 
+                  tf4_table[all_signames,]$logFC,
+                  row.names=all_signames)
+colnames(full) = paste0("TF", 1:4)
+@
+
+\noindent Another couple of manipulations are necessary, to provide information necessary for the rendering of the heatmap. We need to know the smallest and largest fold change values, so the extent of the range of values represented can be passed to the heatmap function, and we can keep zero (i.e. no change) in the centre of the colour spectrum. We also filter out unannotated genes at this stage, since they are of limited interest.
+
+<<cache=TRUE>>=
+row_names = as.character(tf1_table[rownames(full),]$symbol)
+##Filter out unannotated genes
+hm_data = full[!is.na(row_names), ]
+row_names = row_names[!is.na(row_names)]
+@
+
+\noindent Finally, the heatmap itself is plotted (figure \ref{Cockell_F4}). The \texttt{heatmap.2} function from the \texttt{gplots} package is responsible for a number of data manipulations while drawing the heatmap. It rearranges the data rows (i.e. the probes) according to the results of a clustering step (using a Euclidean distance matrix, by default), and it colours the cells of the heatmap according to the fold change value for that probe in the contrast that the column represents. The \texttt{breaks} argument defines the scope of the colour gradient, ensuring the the most "blue" cell is the one with the biggest negative fold change, that the most "red" cell is the one with the largest positive fold change, and that white (the centre of the colour gradient) is set at zero. 
+
+<<echo=FALSE>>=
+par(old_par)
+@
+
+<<figure5, fig.keep='none', cache=TRUE, message=FALSE, fig.height=8, tidy=FALSE>>=
+library("gplots")
+breaks = c(seq(min(full), 0, length.out=128), 
+           seq(0, max(full), length.out=128))
+heatmap.2(as.matrix(hm_data), dendrogram='row', Colv=FALSE,
+              col=bluered(255), key=TRUE, labRow=row_names,
+              breaks=breaks, symkey=FALSE, density.info="none", 
+              trace="none", cexRow=0.5, cexCol=0.75)
+@
+
+\noindent The resulting heat map is shown in figure \ref{Cockell_F4}. It is worth noting that many heat maps are constructed using a red-green colour scheme. However, since 5\%-10\% of the male population are red-green colour blind, this is a particularly poor choice of colours.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{graphics/figure4-crop}
+\caption{Clustering of the top ten differentially expressed genes from each main contrast. Red and blue correspond to up- and down-regulation respectively.}\label{Cockell_F4}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+

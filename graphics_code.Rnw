@@ -1,0 +1,170 @@
+% !Rnw root = Cockell_main.Rnw
+
+%Since we'll have to submit the plots separately, I thought it would
+%be sensible to be explict with the plots commands.
+
+<<echo=FALSE>>=
+
+##Function that tweaks the plots margins
+setnicepar = function(...)
+par(mar=c(3,3,2,1), 
+mgp=c(2,0.4,0), tck=-.01,
+cex.axis=0.9, las=1, ...)
+
+#Set a nice palette of colours
+palette(c(rgb(92,147,52, maxColorValue=255), rgb(177,91,210, maxColorValue=255), 
+rgb(210,85,44, maxColorValue=255),
+rgb(106,121,183, maxColorValue=255),
+rgb(54,144,122, maxColorValue=255),
+rgb(160,120,40, maxColorValue=255),
+rgb(192,81,143, maxColorValue=255),
+rgb(199,76,88, maxColorValue=255)))
+dpi = 500
+@
+
+
+<<echo=FALSE, cache=TRUE>>=
+###Figure 1
+#The figures from the affycore can't really be manipulated
+#So I've just implemented them myself
+
+###PCA and array densities
+
+#png("graphics/figure1.png", width=12*dpi, height=9*dpi, res=dpi)
+pdf("graphics/figure1.pdf", width=12, height=9)
+setnicepar(mfrow=c(2,3))
+
+expr = log2(exprs(raw_data))
+d = apply(expr, 2, density)
+plot(0, 0, xlim=c(2, 16), ylim=c(0, 2.2), 
+     xlab=expression(paste(log[2], " Intensity")), ylab="Density")
+cols = rep(1:8, each=3)
+for(i in seq_along(d)) {
+  lines(d[[i]]$x, d[[i]]$y, col=cols[i], lty=3)
+}
+abline(h=0)
+text(16, 2.2, "(a)")
+grid()
+
+boxplot(expr, range=0, ylab=expression(paste(log[2], " Intensity")), 
+        axes=FALSE, frame=TRUE, ylim=c(3, 15), xlab="Microarray", col=rep(1:8, each=3))
+axis(2, at=seq(3, 15, 3))
+axis(1, at=c(2, 9.6, 18.5), 
+     labels=c("Control", "Single KOs", "Double KOs"))
+grid()
+text(24.5, 15, "(b)")
+
+
+
+pca = prcomp(t(expr))
+plot(pca$x[,1], pca$x[,2], 
+     col=rep(1:8, each=3), pch=rep(c(19,8, 2:7), each=3), 
+     xlab="Principal Component 1", ylab="Principal Component 2", 
+     xlim=c(-50, 50), ylim=c(-50,50))
+grid()
+text(50, 50, "(c)")
+
+
+
+######################################
+##QC data
+##Second row
+######################################
+expr = exprs(qc_data)
+
+d = apply(expr, 2, density)
+plot(0, 0, xlim=c(2, 16), ylim=c(0, 2.2), 
+     xlab=expression(paste(log[2], " Intensity")), ylab="Density")
+cols = rep(1:8, each=3)
+for(i in seq_along(d)) {
+  lines(d[[i]]$x, d[[i]]$y, col=cols[i], lty=3)
+}
+abline(h=0)
+text(16, 2.2, "(d)")
+grid()
+
+boxplot(expr, range=0, ylab=expression(paste(log[2], " Intensity")), 
+        axes=FALSE, frame=TRUE, ylim=c(3, 15), xlab="Microarray", col=rep(1:8, each=3))
+axis(2, at=seq(3, 15, 3))
+axis(1, at=c(2, 9.6, 18.5), 
+     labels=c("Control", "Single KOs", "Double KOs"))
+grid()
+text(24.5, 15, "(e)")
+
+pca = prcomp(t(expr))
+plot(pca$x[,1], pca$x[,2], 
+     col=rep(1:8, each=3), pch=rep(c(19,8, 2:7), each=3), 
+     xlab="Principal Component 1", ylab="Principal Component 2", 
+     xlim=c(-50, 50), ylim=c(-50, 50))
+text(50, 50, "(f)")
+grid()
+sink=dev.off()
+system("pdfcrop graphics/figure1.pdf")
+@
+
+
+<<echo=FALSE, cache=TRUE>>=
+  ###Figure 2
+  ###
+
+plot_vol = function(gene_list, ...) {
+  cut_off = abs(gene_list$logFC) > 1 & gene_list$adj.P.Val < 0.05
+  pch = rep(20, length(gene_list$logFC))
+  pch[cut_off] = 17
+  
+
+  plot(gene_list$logFC, -log10(gene_list$adj.P.Val), 
+     col=1+(abs(gene_list$logFC) > 1 & gene_list$adj.P.Val < 0.05),
+     pch= pch,
+     xlim=c(-3, 3), ylim=c(0, 20), 
+     ylab=expression(paste(-log[10], " p-value")), 
+     xlab=expression(paste(log[2], " fold change")), cex=0.6, ...)
+  abline(v=1, lty=2); abline(v=-1, lty=2); 
+  abline(h=-log10(0.05), lty=2); 
+  grid()
+}
+#png("graphics/figure2.png", width=12*dpi, height=4.5*dpi, res=dpi)
+pdf("graphics/figure2.pdf", width=12, height=4.5)
+setnicepar(mfrow=c(1,3))
+plot_vol(topTable(fit2, coef=1, number=nrow(anno_df)));text(3, 20, "(a)")
+plot_vol(topTable(fit2, coef=4, number=nrow(anno_df)));text(3, 20, "(b)")
+plot_vol(topTable(fit2, coef=5, number=nrow(anno_df)));text(3, 20, "(c)")
+sink=dev.off()
+system("pdfcrop graphics/figure2.pdf")
+@
+
+
+<<echo=FALSE, cache=TRUE, eval=TRUE>>=
+##Figure 3
+##Outputting in png format results in silly borders
+##So output in pdf, then crop
+3*4.5
+pdf("graphics/figure3.pdf", width=13.5, height=4.5)
+results = classifyTestsP(fit2, p.value=0.01)
+setnicepar(mfrow=c(1,3), mgp=c(0,0,0))
+vennDiagram(results[,c('TF1 - Ctrl', 'TF4 - Ctrl', 'TF1TF4 - TF1 - TF4 + Ctrl')], 
+            cex=0.7, mar=c(0,0,0,0))
+vennDiagram(results[,c('TF2 - Ctrl', 'TF4 - Ctrl', 'TF2TF4 - TF2 - TF4 + Ctrl')], 
+            cex=0.7, mar=c(0,0,0,0))
+vennDiagram(results[,c('TF3 - Ctrl', 'TF4 - Ctrl', 'TF3TF4 - TF3 - TF4 + Ctrl')], 
+            cex=0.7, mar=c(0,0,0,0))
+sink=dev.off()
+system("pdfcrop graphics/figure3.pdf")
+#system("convert graphics/figure3-crop.pdf graphics/figure3.png")
+
+@
+
+
+<<echo=FALSE,  eval=FALSE>>=
+pdf("graphics/figure4.pdf", width=10, height=8)
+par(old_par, mgp=c(0,1,0))
+heatmap.2(as.matrix(hm_data), dendrogram='row', Colv=FALSE,
+              col=bluered(255), scale="none",key=TRUE, labRow=row_names,
+              breaks=breaks, symkey=FALSE, density.info="none", 
+              trace="none", cexRow=0.5, cexCol=0.75)
+sink=dev.off()
+system("pdfcrop graphics/figure4.pdf")
+#system("convert -quality 90% graphics/figure4-crop.pdf graphics/figure4.png")
+
+@
+
