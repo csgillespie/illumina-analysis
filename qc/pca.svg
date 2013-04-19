@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="358.545305pt" height="358.545305pt" viewBox="0 0 358.545305 358.545305" version="1.1" id="Fig:pca">
+  <defs>
+    <g>
+      <symbol overflow="visible" id="pca-glyph0-0">
+        <path style="stroke:none;" d="M 2.296875 -3.859375 L 5.15625 -3.859375 C 5.875 -3.859375 6.4375 -4.078125 6.921875 -4.515625 C 7.46875 -5.015625 7.71875 -5.59375 7.71875 -6.4375 C 7.71875 -8.15625 6.703125 -9.109375 4.90625 -9.109375 L 1.140625 -9.109375 L 1.140625 0 L 2.296875 0 Z M 2.296875 -4.890625 L 2.296875 -8.09375 L 4.71875 -8.09375 C 5.84375 -8.09375 6.5 -7.484375 6.5 -6.484375 C 6.5 -5.484375 5.84375 -4.890625 4.71875 -4.890625 Z M 2.296875 -4.890625 "/>
+      </symbol>
+      <symbol overflow="visible" id="pca-glyph0-1">
+        <path style="stroke:none;" d="M 8.28125 -6.28125 C 7.90625 -8.28125 6.765625 -9.265625 4.765625 -9.265625 C 3.53125 -9.265625 2.546875 -8.875 1.875 -8.125 C 1.046875 -7.21875 0.59375 -5.921875 0.59375 -4.453125 C 0.59375 -2.953125 1.0625 -1.65625 1.921875 -0.78125 C 2.625 -0.046875 3.53125 0.28125 4.71875 0.28125 C 6.9375 0.28125 8.1875 -0.90625 8.46875 -3.328125 L 7.265625 -3.328125 C 7.15625 -2.703125 7.03125 -2.28125 6.84375 -1.90625 C 6.46875 -1.15625 5.703125 -0.734375 4.71875 -0.734375 C 2.90625 -0.734375 1.765625 -2.1875 1.765625 -4.46875 C 1.765625 -6.796875 2.859375 -8.234375 4.625 -8.234375 C 5.359375 -8.234375 6.046875 -8.015625 6.421875 -7.65625 C 6.765625 -7.34375 6.953125 -6.96875 7.09375 -6.28125 Z M 8.28125 -6.28125 "/>
+      </symbol>
+      <symbol overflow="visible" id="pca-glyph0-2">
+        <path style="stroke:none;" d="M 3.234375 -6.3125 L 3.234375 0 L 4.34375 0 L 4.34375 -8.859375 L 3.609375 -8.859375 C 3.21875 -7.5 2.96875 -7.3125 1.28125 -7.09375 L 1.28125 -6.3125 Z M 3.234375 -6.3125 "/>
+      </symbol>
+      <symbol overflow="visible" id="pca-glyph1-0">
+        <path style="stroke:none;" d="M -3.859375 -2.296875 L -3.859375 -5.15625 C -3.859375 -5.875 -4.078125 -6.4375 -4.515625 -6.921875 C -5.015625 -7.46875 -5.59375 -7.71875 -6.4375 -7.71875 C -8.15625 -7.71875 -9.109375 -6.703125 -9.109375 -4.90625 L -9.109375 -1.140625 L 0 -1.140625 L 0 -2.296875 Z M -4.890625 -2.296875 L -8.09375 -2.296875 L -8.09375 -4.71875 C -8.09375 -5.84375 -7.484375 -6.5 -6.484375 -6.5 C -5.484375 -6.5 -4.890625 -5.84375 -4.890625 -4.71875 Z M -4.890625 -2.296875 "/>
+      </symbol>
+      <symbol overflow="visible" id="pca-glyph1-1">
+        <path style="stroke:none;" d="M -6.28125 -8.28125 C -8.28125 -7.90625 -9.265625 -6.765625 -9.265625 -4.765625 C -9.265625 -3.53125 -8.875 -2.546875 -8.125 -1.875 C -7.21875 -1.046875 -5.921875 -0.59375 -4.453125 -0.59375 C -2.953125 -0.59375 -1.65625 -1.0625 -0.78125 -1.921875 C -0.046875 -2.625 0.28125 -3.53125 0.28125 -4.71875 C 0.28125 -6.9375 -0.90625 -8.1875 -3.328125 -8.46875 L -3.328125 -7.265625 C -2.703125 -7.15625 -2.28125 -7.03125 -1.90625 -6.84375 C -1.15625 -6.46875 -0.734375 -5.703125 -0.734375 -4.71875 C -0.734375 -2.90625 -2.1875 -1.765625 -4.46875 -1.765625 C -6.796875 -1.765625 -8.234375 -2.859375 -8.234375 -4.625 C -8.234375 -5.359375 -8.015625 -6.046875 -7.65625 -6.421875 C -7.34375 -6.765625 -6.96875 -6.953125 -6.28125 -7.09375 Z M -6.28125 -8.28125 "/>
+      </symbol>
+      <symbol overflow="visible" id="pca-glyph1-2">
+        <path style="stroke:none;" d="M -1.09375 -6.328125 L -1.09375 -1.65625 C -1.8125 -1.78125 -2.28125 -2.171875 -2.90625 -3.265625 L -3.59375 -4.515625 C -4.265625 -5.75 -5.171875 -6.390625 -6.265625 -6.390625 C -7 -6.390625 -7.6875 -6.09375 -8.15625 -5.5625 C -8.640625 -5.03125 -8.859375 -4.390625 -8.859375 -3.546875 C -8.859375 -2.421875 -8.46875 -1.59375 -7.71875 -1.09375 C -7.234375 -0.78125 -6.6875 -0.65625 -5.78125 -0.625 L -5.78125 -1.71875 C -6.390625 -1.765625 -6.75 -1.84375 -7.03125 -1.984375 C -7.578125 -2.28125 -7.90625 -2.84375 -7.90625 -3.515625 C -7.90625 -4.515625 -7.1875 -5.265625 -6.234375 -5.265625 C -5.53125 -5.265625 -4.9375 -4.84375 -4.484375 -4.0625 L -3.84375 -2.90625 C -2.78125 -1.0625 -1.953125 -0.53125 0 -0.421875 L 0 -6.328125 Z M -1.09375 -6.328125 "/>
+      </symbol>
+      <symbol overflow="visible" id="pca-glyph2-0">
+        <path style="stroke:none;" d="M 2.859375 -3.15625 L 0.46875 -3.15625 L 0.46875 -2.421875 L 2.859375 -2.421875 Z M 2.859375 -3.15625 "/>
+      </symbol>
+      <symbol overflow="visible" id="pca-glyph2-1">
+        <path style="stroke:none;" d="M 2.234375 -3.28125 L 2.34375 -3.28125 L 2.71875 -3.296875 C 3.6875 -3.296875 4.203125 -2.84375 4.203125 -1.984375 C 4.203125 -1.09375 3.640625 -0.5625 2.71875 -0.5625 C 1.75 -0.5625 1.265625 -1.046875 1.21875 -2.078125 L 0.328125 -2.078125 C 0.359375 -1.5 0.46875 -1.125 0.640625 -0.8125 C 1 -0.125 1.703125 0.234375 2.6875 0.234375 C 4.15625 0.234375 5.109375 -0.640625 5.109375 -2 C 5.109375 -2.90625 4.75 -3.40625 3.890625 -3.703125 C 4.5625 -3.96875 4.890625 -4.46875 4.890625 -5.1875 C 4.890625 -6.421875 4.078125 -7.15625 2.71875 -7.15625 C 1.265625 -7.15625 0.5 -6.375 0.46875 -4.84375 L 1.359375 -4.84375 C 1.375 -5.28125 1.40625 -5.515625 1.53125 -5.75 C 1.71875 -6.140625 2.171875 -6.375 2.71875 -6.375 C 3.515625 -6.375 3.984375 -5.921875 3.984375 -5.15625 C 3.984375 -4.65625 3.8125 -4.34375 3.40625 -4.1875 C 3.171875 -4.09375 2.859375 -4.046875 2.234375 -4.03125 Z M 2.234375 -3.28125 "/>
+      </symbol>
+      <symbol overflow="visible" id="pca-glyph2-2">
+        <path style="stroke:none;" d="M 2.78125 -7.15625 C 2.109375 -7.15625 1.5 -6.859375 1.125 -6.375 C 0.671875 -5.75 0.4375 -4.78125 0.4375 -3.46875 C 0.4375 -1.046875 1.234375 0.234375 2.78125 0.234375 C 4.296875 0.234375 5.125 -1.046875 5.125 -3.40625 C 5.125 -4.796875 4.890625 -5.71875 4.421875 -6.375 C 4.046875 -6.875 3.453125 -7.15625 2.78125 -7.15625 Z M 2.78125 -6.375 C 3.734375 -6.375 4.203125 -5.40625 4.203125 -3.484375 C 4.203125 -1.453125 3.75 -0.5 2.75 -0.5 C 1.8125 -0.5 1.34375 -1.5 1.34375 -3.453125 C 1.34375 -5.40625 1.8125 -6.375 2.78125 -6.375 Z M 2.78125 -6.375 "/>
+      </symbol>
+      <symbol overflow="visible" id="pca-glyph2-3">
+        <path style="stroke:none;" d="M 5.109375 -0.875 L 1.34375 -0.875 C 1.4375 -1.46875 1.75 -1.84375 2.640625 -2.359375 L 3.640625 -2.890625 C 4.640625 -3.4375 5.15625 -4.171875 5.15625 -5.0625 C 5.15625 -5.65625 4.921875 -6.203125 4.484375 -6.59375 C 4.0625 -6.96875 3.546875 -7.15625 2.859375 -7.15625 C 1.953125 -7.15625 1.28125 -6.828125 0.890625 -6.234375 C 0.640625 -5.84375 0.53125 -5.40625 0.5 -4.671875 L 1.390625 -4.671875 C 1.421875 -5.15625 1.484375 -5.453125 1.609375 -5.6875 C 1.84375 -6.109375 2.296875 -6.375 2.84375 -6.375 C 3.640625 -6.375 4.25 -5.796875 4.25 -5.03125 C 4.25 -4.46875 3.921875 -3.984375 3.28125 -3.625 L 2.359375 -3.09375 C 0.859375 -2.25 0.421875 -1.578125 0.34375 0 L 5.109375 0 Z M 5.109375 -0.875 "/>
+      </symbol>
+      <symbol overflow="visible" id="pca-glyph2-4">
+        <path style="stroke:none;" d="M 2.609375 -5.09375 L 2.609375 0 L 3.5 0 L 3.5 -7.15625 L 2.921875 -7.15625 C 2.609375 -6.0625 2.40625 -5.90625 1.03125 -5.734375 L 1.03125 -5.09375 Z M 2.609375 -5.09375 "/>
+      </symbol>
+    </g>
+    <clipPath id="pca-clip1">
+      <path d="M 59.6875 35.007812 L 323.550781 35.007812 L 323.550781 308.070312 L 59.6875 308.070312 Z M 59.6875 35.007812 "/>
+    </clipPath>
+  </defs>
+  <g id="surface39">
+    <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+      <use xlink:href="#pca-glyph0-0" x="178.964844" y="346.546875"/>
+      <use xlink:href="#pca-glyph0-1" x="187.302368" y="346.546875"/>
+      <use xlink:href="#pca-glyph0-2" x="196.327408" y="346.546875"/>
+    </g>
+    <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+      <use xlink:href="#pca-glyph1-0" x="22.09375" y="183.195312"/>
+      <use xlink:href="#pca-glyph1-1" x="22.09375" y="174.857788"/>
+      <use xlink:href="#pca-glyph1-2" x="22.09375" y="165.832748"/>
+    </g>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 74.445312 35.007812 L 74.445312 29.339844 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 114.074219 35.007812 L 114.074219 29.339844 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 153.699219 35.007812 L 153.699219 29.339844 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 193.324219 35.007812 L 193.324219 29.339844 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 232.953125 35.007812 L 232.953125 29.339844 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 272.578125 35.007812 L 272.578125 29.339844 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 312.203125 35.007812 L 312.203125 29.339844 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 59.6875 306.773438 L 54.019531 306.773438 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 59.6875 267.148438 L 54.019531 267.148438 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 59.6875 227.519531 L 54.019531 227.519531 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 59.6875 187.894531 L 54.019531 187.894531 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 59.6875 148.269531 L 54.019531 148.269531 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 59.6875 108.640625 L 54.019531 108.640625 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 59.6875 69.015625 L 54.019531 69.015625 "/>
+    <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+      <use xlink:href="#pca-glyph2-0" x="33.765625" y="270.828125"/>
+      <use xlink:href="#pca-glyph2-1" x="37.126831" y="270.828125"/>
+      <use xlink:href="#pca-glyph2-2" x="42.738922" y="270.828125"/>
+    </g>
+    <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+      <use xlink:href="#pca-glyph2-0" x="33.765625" y="231.199219"/>
+      <use xlink:href="#pca-glyph2-3" x="37.126831" y="231.199219"/>
+      <use xlink:href="#pca-glyph2-2" x="42.738922" y="231.199219"/>
+    </g>
+    <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+      <use xlink:href="#pca-glyph2-0" x="33.765625" y="191.574219"/>
+      <use xlink:href="#pca-glyph2-4" x="37.126831" y="191.574219"/>
+      <use xlink:href="#pca-glyph2-2" x="42.738922" y="191.574219"/>
+    </g>
+    <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+      <use xlink:href="#pca-glyph2-2" x="42.738281" y="151.949219"/>
+    </g>
+    <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+      <use xlink:href="#pca-glyph2-4" x="37.128906" y="112.320312"/>
+      <use xlink:href="#pca-glyph2-2" x="42.740997" y="112.320312"/>
+    </g>
+    <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+      <use xlink:href="#pca-glyph2-3" x="37.128906" y="72.695312"/>
+      <use xlink:href="#pca-glyph2-2" x="42.740997" y="72.695312"/>
+    </g>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 74.445312 307.070312 L 74.445312 312.738281 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 114.074219 307.070312 L 114.074219 312.738281 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 153.699219 307.070312 L 153.699219 312.738281 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 193.324219 307.070312 L 193.324219 312.738281 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 232.953125 307.070312 L 232.953125 312.738281 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 272.578125 307.070312 L 272.578125 312.738281 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 312.203125 307.070312 L 312.203125 312.738281 "/>
+    <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+      <use xlink:href="#pca-glyph2-0" x="67.152344" y="325.765625"/>
+      <use xlink:href="#pca-glyph2-1" x="70.51355" y="325.765625"/>
+      <use xlink:href="#pca-glyph2-2" x="76.125641" y="325.765625"/>
+    </g>
+    <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+      <use xlink:href="#pca-glyph2-0" x="106.78125" y="325.765625"/>
+      <use xlink:href="#pca-glyph2-3" x="110.142456" y="325.765625"/>
+      <use xlink:href="#pca-glyph2-2" x="115.754547" y="325.765625"/>
+    </g>
+    <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+      <use xlink:href="#pca-glyph2-0" x="146.40625" y="325.765625"/>
+      <use xlink:href="#pca-glyph2-4" x="149.767456" y="325.765625"/>
+      <use xlink:href="#pca-glyph2-2" x="155.379547" y="325.765625"/>
+    </g>
+    <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+      <use xlink:href="#pca-glyph2-2" x="190.519531" y="325.765625"/>
+    </g>
+    <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+      <use xlink:href="#pca-glyph2-4" x="227.339844" y="325.765625"/>
+      <use xlink:href="#pca-glyph2-2" x="232.951935" y="325.765625"/>
+    </g>
+    <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+      <use xlink:href="#pca-glyph2-3" x="266.964844" y="325.765625"/>
+      <use xlink:href="#pca-glyph2-2" x="272.576935" y="325.765625"/>
+    </g>
+    <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+      <use xlink:href="#pca-glyph2-1" x="306.589844" y="325.765625"/>
+      <use xlink:href="#pca-glyph2-2" x="312.201935" y="325.765625"/>
+    </g>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 322.550781 306.773438 L 328.222656 306.773438 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 322.550781 267.148438 L 328.222656 267.148438 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 322.550781 227.519531 L 328.222656 227.519531 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 322.550781 187.894531 L 328.222656 187.894531 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 322.550781 148.269531 L 328.222656 148.269531 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 322.550781 108.640625 L 328.222656 108.640625 "/>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 322.550781 69.015625 L 328.222656 69.015625 "/>
+    <g clip-path="url(#pca-clip1)" clip-rule="nonzero" type="plot-region" class="plot-region">
+      <path d="M 195.695312 129.910156 C 195.695312 134.574219 188.695312 134.574219 188.695312 129.910156 C 188.695312 125.242188 195.695312 125.242188 195.695312 129.910156 " type="plot-point" class="aqm1" onclick="plotObjRespond('click', 1, 'pca')" onmouseover="plotObjRespond('show', 1, 'pca')" onmouseout="plotObjRespond('hide', 1, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 191.988281 134.855469 C 191.988281 139.523438 184.988281 139.523438 184.988281 134.855469 C 184.988281 130.191406 191.988281 130.191406 191.988281 134.855469 " type="plot-point" class="aqm2" onclick="plotObjRespond('click', 2, 'pca')" onmouseover="plotObjRespond('show', 2, 'pca')" onmouseout="plotObjRespond('hide', 2, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 198.667969 136.664062 C 198.667969 141.332031 191.667969 141.332031 191.667969 136.664062 C 191.667969 131.996094 198.667969 131.996094 198.667969 136.664062 " type="plot-point" class="aqm3" onclick="plotObjRespond('click', 3, 'pca')" onmouseover="plotObjRespond('show', 3, 'pca')" onmouseout="plotObjRespond('hide', 3, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 156.128906 120.417969 C 156.128906 125.085938 149.128906 125.085938 149.128906 120.417969 C 149.128906 115.75 156.128906 115.75 156.128906 120.417969 " type="plot-point" class="aqm4" onclick="plotObjRespond('click', 4, 'pca')" onmouseover="plotObjRespond('show', 4, 'pca')" onmouseout="plotObjRespond('hide', 4, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 169.78125 106.320312 C 169.78125 110.984375 162.78125 110.984375 162.78125 106.320312 C 162.78125 101.652344 169.78125 101.652344 169.78125 106.320312 " type="plot-point" class="aqm5" onclick="plotObjRespond('click', 5, 'pca')" onmouseover="plotObjRespond('show', 5, 'pca')" onmouseout="plotObjRespond('hide', 5, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 156.953125 130.511719 C 156.953125 135.179688 149.953125 135.179688 149.953125 130.511719 C 149.953125 125.84375 156.953125 125.84375 156.953125 130.511719 " type="plot-point" class="aqm6" onclick="plotObjRespond('click', 6, 'pca')" onmouseover="plotObjRespond('show', 6, 'pca')" onmouseout="plotObjRespond('hide', 6, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 155.296875 51.714844 C 155.296875 56.378906 148.296875 56.378906 148.296875 51.714844 C 148.296875 47.046875 155.296875 47.046875 155.296875 51.714844 " type="plot-point" class="aqm7" onclick="plotObjRespond('click', 7, 'pca')" onmouseover="plotObjRespond('show', 7, 'pca')" onmouseout="plotObjRespond('hide', 7, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 147.09375 62.8125 C 147.09375 67.480469 140.09375 67.480469 140.09375 62.8125 C 140.09375 58.144531 147.09375 58.144531 147.09375 62.8125 " type="plot-point" class="aqm8" onclick="plotObjRespond('click', 8, 'pca')" onmouseover="plotObjRespond('show', 8, 'pca')" onmouseout="plotObjRespond('hide', 8, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 143.277344 55.09375 C 143.277344 59.757812 136.277344 59.757812 136.277344 55.09375 C 136.277344 50.425781 143.277344 50.425781 143.277344 55.09375 " type="plot-point" class="aqm9" onclick="plotObjRespond('click', 9, 'pca')" onmouseover="plotObjRespond('show', 9, 'pca')" onmouseout="plotObjRespond('hide', 9, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 79.328125 200.804688 C 79.328125 205.472656 72.328125 205.472656 72.328125 200.804688 C 72.328125 196.140625 79.328125 196.140625 79.328125 200.804688 " type="plot-point" class="aqm10" onclick="plotObjRespond('click', 10, 'pca')" onmouseover="plotObjRespond('show', 10, 'pca')" onmouseout="plotObjRespond('hide', 10, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 99.320312 173.144531 C 99.320312 177.808594 92.320312 177.808594 92.320312 173.144531 C 92.320312 168.476562 99.320312 168.476562 99.320312 173.144531 " type="plot-point" class="aqm11" onclick="plotObjRespond('click', 11, 'pca')" onmouseover="plotObjRespond('show', 11, 'pca')" onmouseout="plotObjRespond('hide', 11, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 90.097656 185.1875 C 90.097656 189.855469 83.097656 189.855469 83.097656 185.1875 C 83.097656 180.519531 90.097656 180.519531 90.097656 185.1875 " type="plot-point" class="aqm12" onclick="plotObjRespond('click', 12, 'pca')" onmouseover="plotObjRespond('show', 12, 'pca')" onmouseout="plotObjRespond('hide', 12, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 309.910156 194.546875 C 309.910156 199.210938 302.910156 199.210938 302.910156 194.546875 C 302.910156 189.878906 309.910156 189.878906 309.910156 194.546875 " type="plot-point" class="aqm13" onclick="plotObjRespond('click', 13, 'pca')" onmouseover="plotObjRespond('show', 13, 'pca')" onmouseout="plotObjRespond('hide', 13, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 303.28125 203.367188 C 303.28125 208.03125 296.28125 208.03125 296.28125 203.367188 C 296.28125 198.699219 303.28125 198.699219 303.28125 203.367188 " type="plot-point" class="aqm14" onclick="plotObjRespond('click', 14, 'pca')" onmouseover="plotObjRespond('show', 14, 'pca')" onmouseout="plotObjRespond('hide', 14, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 304.960938 201.480469 C 304.960938 206.144531 297.960938 206.144531 297.960938 201.480469 C 297.960938 196.8125 304.960938 196.8125 304.960938 201.480469 " type="plot-point" class="aqm15" onclick="plotObjRespond('click', 15, 'pca')" onmouseover="plotObjRespond('show', 15, 'pca')" onmouseout="plotObjRespond('hide', 15, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 277.539062 164.140625 C 277.539062 168.804688 270.539062 168.804688 270.539062 164.140625 C 270.539062 159.472656 277.539062 159.472656 277.539062 164.140625 " type="plot-point" class="aqm16" onclick="plotObjRespond('click', 16, 'pca')" onmouseover="plotObjRespond('show', 16, 'pca')" onmouseout="plotObjRespond('hide', 16, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 270.34375 168.941406 C 270.34375 173.605469 263.34375 173.605469 263.34375 168.941406 C 263.34375 164.273438 270.34375 164.273438 270.34375 168.941406 " type="plot-point" class="aqm17" onclick="plotObjRespond('click', 17, 'pca')" onmouseover="plotObjRespond('show', 17, 'pca')" onmouseout="plotObjRespond('hide', 17, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 268.820312 157.398438 C 268.820312 162.066406 261.820312 162.066406 261.820312 157.398438 C 261.820312 152.734375 268.820312 152.734375 268.820312 157.398438 " type="plot-point" class="aqm18" onclick="plotObjRespond('click', 18, 'pca')" onmouseover="plotObjRespond('show', 18, 'pca')" onmouseout="plotObjRespond('hide', 18, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 253.347656 100.449219 C 253.347656 105.117188 246.347656 105.117188 246.347656 100.449219 C 246.347656 95.78125 253.347656 95.78125 253.347656 100.449219 " type="plot-point" class="aqm19" onclick="plotObjRespond('click', 19, 'pca')" onmouseover="plotObjRespond('show', 19, 'pca')" onmouseout="plotObjRespond('hide', 19, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 248.648438 97.667969 C 248.648438 102.335938 241.648438 102.335938 241.648438 97.667969 C 241.648438 93.003906 248.648438 93.003906 248.648438 97.667969 " type="plot-point" class="aqm20" onclick="plotObjRespond('click', 20, 'pca')" onmouseover="plotObjRespond('show', 20, 'pca')" onmouseout="plotObjRespond('hide', 20, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 248.773438 88.972656 C 248.773438 93.636719 241.773438 93.636719 241.773438 88.972656 C 241.773438 84.304688 248.773438 84.304688 248.773438 88.972656 " type="plot-point" class="aqm21" onclick="plotObjRespond('click', 21, 'pca')" onmouseover="plotObjRespond('show', 21, 'pca')" onmouseout="plotObjRespond('hide', 21, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 177.171875 200.386719 C 177.171875 205.050781 170.171875 205.050781 170.171875 200.386719 C 170.171875 195.71875 177.171875 195.71875 177.171875 200.386719 " type="plot-point" class="aqm22" onclick="plotObjRespond('click', 22, 'pca')" onmouseover="plotObjRespond('show', 22, 'pca')" onmouseout="plotObjRespond('hide', 22, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 102.246094 290.363281 C 102.246094 295.03125 95.246094 295.03125 95.246094 290.363281 C 95.246094 285.695312 102.246094 285.695312 102.246094 290.363281 " type="plot-point" class="aqm23" onclick="plotObjRespond('click', 23, 'pca')" onmouseover="plotObjRespond('show', 23, 'pca')" onmouseout="plotObjRespond('hide', 23, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+      <path d="M 175.152344 203.308594 C 175.152344 207.976562 168.152344 207.976562 168.152344 203.308594 C 168.152344 198.644531 175.152344 198.644531 175.152344 203.308594 " type="plot-point" class="aqm24" onclick="plotObjRespond('click', 24, 'pca')" onmouseover="plotObjRespond('show', 24, 'pca')" onmouseout="plotObjRespond('hide', 24, 'pca')" fill-rule="nonzero" fill="rgb(12.156863%,47.058824%,70.588235%)" fill-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(12.156863%,47.058824%,70.588235%)" stroke-opacity="1" stroke-miterlimit="10"/>
+    </g>
+    <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 59.6875 35.007812 L 322.550781 35.007812 L 322.550781 307.070312 L 59.6875 307.070312 Z M 59.6875 35.007812 "/>
+  </g>
+</svg>
