@@ -1,5 +1,5 @@
-Bioconductor Tools for Microarray Analysis
-==========================================
+Bioconductor Tools for Microarray Data Analysis
+===============================================
 
 This repository contains the knitr/latex source, graphics and R code used in 
 book chapter in 
