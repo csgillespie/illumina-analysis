@@ -6,16 +6,68 @@
 
 \subsection{What is Bioconductor?}
 
-Bioconductor \cite{Gentleman04} is an open source software project for the R statistical computing language.  The main aim of the project is to provide R packages to facilitate the analysis of DNA microarray, sequencing, SNP and other genomic data.  In addition to various packages for analysis of data, they also distribute meta-data packages that provide useful annotation.  The stable non-development version of Bioconductor is normally released twice annually\footnote{http://www.bioconductor.org/news/bioc\_2\_11\_release/}. In addition to providing packages the Bioconductor site (\href{http://www.bioconductor.org}{bioconductor.org}) also provides documentation for each package, often a brief vignette and a more comprehensive user guide.
+Bioconductor\cite{Gentleman04} is an open source software project for the R statistical computing language.  The main aim of the project is to provide R packages to facilitate the analysis of DNA microarray, sequencing, SNP and other genomic data.  In addition to various packages for analysis of data, they also distribute meta-data packages that provide useful annotation.  The stable non-development version of Bioconductor is normally released biannually.\footnote{http://www.bioconductor.org/news/bioc\textunderscore 2\textunderscore 11\textunderscore release/} In addition to providing packages the Bioconductor site (bioconductor.org) also provides documentation for each package, often a brief vignette and a more comprehensive user guide.
+
+\subsection{The microarray analysis workflow}
+
+There are a number of microarray platforms for studying gene expression. The basic workflow used for deriving a list of differentially expressed genes follows the same basic plan, irrespective of platform. When using Bioconductor, these steps are usually:
+\begin{enumerate}
+\item Data reading. Data is read from text or binary format files into R. Raw data in R is stored as an \texttt{ExpressionSet}.
+\item Normalisation. This process makes groups of arrays comparable to one another. 
+\item Quality control. This step ensures the data are of sufficient quality to enable effective analysis. This usually takes two forms: i) sample-level QC, where outlier samples and poor quality arrays are discarded; and ii) probe-level QC, where poor quality probes and non-expressed probes are removed from consideration. 
+\item Differential expression analysis. Groups of arrays are compared, and genes that vary significantly between them are identified. 
+\item Visualisation. Making graphs and other visual representations of the data on a microarray can be helpful when identifying differentially expressed genes, or groups of interesting genes. 
+\item Functional analysis. Once a gene list has been generated, functional analysis provides useful insight into the biological processes underlying the changes observed in the microarray experiment. 
+\end{enumerate}
+Bioconductor contains packages that perform each of these steps for each of the main array platforms, with many steps, the same package will work with array data from any platform (see table \ref{Cockell_t1}).
+\begin{table}[t]
+\resizebox{\textwidth}{!}{%
+\centering
+\begin{tabular}{@{} l@{$\;$} p{3cm} p{4.5cm} p{4.5cm} ll @{}}
+\toprule
+& & \multicolumn{4}{l}{Array platform} \\
+\cmidrule(l){3-6}
+\multicolumn{2}{@{}l}{Workflow step} & Illumina &  Affymetrix & Agilent & NimbleGen$^*$ \\
+\midrule
+1. & Data reading & lumi\cite{Du01072008}, beadarray (for RAW TIFFs and low level pre-processing) & 
+affy\cite{Gautier:2004kv}, simpleaffy\cite{Wilson:2005eu} & marray\cite{Wang:2002wh}, agilp, limma & 
+oligo\cite{Carvalho:2010bc}, Ringo\cite{Toedling:2007kn} \\
+\\
+2. & Normalisation & lumi & affy, simpleaffy, gcrma (simpleaffy or gcrma are recommended for GCRMA normalisation over RMA offered in affy) & marray, agilp, limma & oligo, Ringo \\
+\\
+3. & Quality Control & lumi, beadarray\cite{Dunning:2007ii}, affycoretools, arrayQualityMetrics\cite{Kauffmann:2009wo} & 
+affy, simpleaffy, affycoretools, arrayQualityMetrics & marray, limma & Ringo \\
+\\
+4. & Differential expression analysis & limma\cite{Smyth04} & limma, simpleaffy
+& limma & limma \\
+\\
+5. & Visualisation & gplots\cite{Bolker:2011wn} & gplots & gplots & gplots \\
+\\
+6. & Functional Analysis & GOstats\cite{Falcon:2007ht}, RamiGO\cite{Schroder:2013cb} & 
+GOstats, RamiGO & GOstats, RamiGO & GOstats, RamiGO \\
+\bottomrule
+\end{tabular}}
+\caption{Suggested Bioconductor packages for dealing with particular steps of the analysis workflow for different array platforms. 
+{\small $^*$nimbleGen arrays were discontinued by Roche as of November 7\textsuperscript{TM}, 2012.}}\label{Cockell_t1}
+\end{table}
+
+
+
+We have chosen to focus on illumina BeadArrays\textsuperscript{TM} in this chapter as the central example for analysis as from our experience they are currently the most popular platform in usage by molecular biologists.  This is mainly due to their cost advantage over comparable arrays from Affymetrix.  In addition by having multiple copies of each probe present on many different beads illumina BeadArrays\textsuperscript{TM} provide within-array technical replicates which variant stabilization transform (VST) can take advantage of to improve differential expression reporting and reduce false positives\cite{Lin:2008ea}.  Also there are known issues with Affymetrix GeneChips which cause systematically incorrect values of intensity to be reported for particular probes and probe sets which do not reflect the abundance of the intended target cRNA molecules\cite{Shanahan:2012kc,Upton:2012ea}. 
+
+
+% We have chosen to focus on illumina BeadArrays in this chapter as from our experience they are currently the most widely used platform. This is mainly due to their cost advantage over comparable arrays from Affymetrix. In addition by having multiple copies of each probe present on many different beads illumina BeadArrays provide within-array technical replicates which variant stabilization transform (VST) can take advantage of to improve differential expression reporting and reduce false positives\cite{Lin01022008}. Also there are known issues with Affymetrix GeneChips which cause systematically incorrect values of intensity to be reported for particular probes and probe sets which do not reflect the abundance of the intended target cRNA molecules\cite{Shanahan:2012kc,Upton:2012ea}. 
+
+
 
 \subsection{Illumina microarrays}
 
-The Illumina BeadArray\textsuperscript{TM} microarray platform makes use of BeadChips, which, as their name suggests are composed of tiny beads.  These beads are made of silica and are just 3$\mu$m in diameter, and are covered in hundreds of thousands of 79 nucleotide long oligonucleotide sequences; individual beads each having a different probe sequence.  A unique property of BeadChips, which distinguish them from Affymetrix arrays, is that every array is unique, the beads self assemble into microwells found on the slide.  As a consequence of this, most probes will be present on the array \~30 times \cite{Gunderson04}. An additional consequence is that each array has to be decoded during its manufacture so that the positions of each probe are known; the first 29 nucleotides of the probe sequence are reserved for decoding the array during manufacture. An Illumina BeadChip can support the analysis of multiple samples having up to 12 copies of each array on a chip.  The HumanHT-12 v4.0 Expression BeadChip has over 47,000 probes which are based on RefSeq 38 and Unigene\footnote{http://www.illumina.com/Documents/products/datasheets/datasheet\_gene\_exp\_analysis.pdf}.  Being randomly assembled means that Illumina arrays don’t suffer so much from spatially localized artifacts \cite{Kuhn04} additionally the presence of multiple copies of each bead can be used as technical replicate information for Variance Stabilizing Transformation (VST) \cite{Lin01022008}.
+The Illumina BeadArray\textsuperscript{TM} microarray platform makes use of BeadChips, which, as their name suggests are composed of tiny beads.  These beads are made of silica and are just 3$\mu$m in diameter, and are covered in hundreds of thousands of seventy-nine nucleotide long oligonucleotide sequences; individual beads each having a different probe sequence.  A unique property of BeadChips, which distinguish them from Affymetrix arrays, is that every array is unique, the beads self assemble into microwells found on the slide.  As a consequence of this, most probes will be present on the array $\sim\,30$ times\cite{Gunderson04}. An additional consequence is that each array has to be decoded during its manufacture so that the positions of each probe are known; the first twenty-nine nucleotides of the probe sequence are reserved for decoding the array during manufacture. An Illumina BeadChip can support the analysis of multiple samples having up to twelve copies of each array on a chip.  The HumanHT-12 v4.0 Expression BeadChip has over 47,000 probes which are based on RefSeq thirty-eight and Unigene.\footnote{http://www.illumina.com/Documents/products/datasheets/datasheet\_gene\_exp\_analysis.pdf}  Being randomly assembled means that Illumina arrays do not suffer so much from spatially localized artifacts additionally the presence of multiple copies of each bead can be used as technical replicate information for Variance Stabilizing Transformation (VST)\cite{Lin01022008,Kuhn04}.
 
-\subsection{lumi}
+\subsection{Lumi}
 
-The \texttt{lumi} package \cite{Du01072008}, available in Bioconductor\footnote{http://www.bioconductor.org/packages/release/bioc/html/lumi.html}, is specifically designed to process BeadArrray data providing VST and quality control steps specifically tuned for this technology.  \texttt{lumi} assumes that data has been pre-background corrected in Illumina's BeadStudio or GenomeStudio, although if it has not they provide the \texttt{lumiB} function which mimics the background correction found therein.  Should you want to investigate processing the raw image files from the scanner directly, in order to have control over the background correction and image processing steps then the Bioconductor package \texttt{beadarray} needs to be used.  This however, depends on the BeadScan Illumina microarray scaner software being set to output raw TIFF files, which is not a default setting, at the time the arrays are processed.  Consequently we are focusing on analysis downstream of BeadStudio or GenomeStudio.  Two key features of \texttt{lumi} which give it an advantage over other methods, which are largely based on Affymetrix data processing methods are: VST which takes advantage of multiple beads per probe when transforming the data and outperforms log2 based transformations \cite{Lin01022008} and Robust Spline Normalisation (RSN) which is designed for Illumina data and combines the advantageous features of both quantile normalisation (fast, gene rank order preserving) and loess normalization which is continuous\footnote{http://www.bioconductor.org/packages/2.11/bioc/vignettes/lumi/inst/doc/lumi.pdf}.  
+The \texttt{lumi} package\cite{Du01072008}, available in Bioconductor,\footnote{http://www.bioconductor.org/packages/release/bioc/html/lumi.html} is specifically designed to process BeadArrray data providing VST and quality control steps specifically tuned for this technology. \texttt{lumi} assumes that data has been pre-background corrected in Illumina's BeadStudio or GenomeStudio, although if it has not they provide the \texttt{lumiB} function which mimics the background correction found therein.  Should you want to investigate processing the raw image files from the scanner directly, in order to have control over the background correction and image processing steps then the Bioconductor package \texttt{beadarray} needs to be used.  This however, depends on the BeadScan Illumina microarray scanner software being set to output raw TIFF files, which is not a default setting, at the time the arrays are processed.  Consequently we are focusing on analysis downstream of BeadStudio or GenomeStudio.  Two key features of \texttt{lumi} which give it an advantage over other methods, which are largely based on Affymetrix data processing methods are: VST which takes advantage of multiple beads per probe when transforming the data and outperforms $\log_2$ based transformations\cite{Lin01022008} and Robust Spline Normalisation (RSN) which is designed for Illumina data and combines the advantageous features of both quantile normalisation (fast, gene rank order preserving) and loess normalization which is continuous.\footnote{http://www.bioconductor.org/packages/2.11/bioc/vignettes/lumi/inst/doc/lumi.pdf}
 
 \subsection{Limma}
 
-Whilst \texttt{lumi} handles the transformation, normalisation and quality control of Illumina microarray data, in order to obtain a list of differentially expressed genes you need to make use of the \texttt{limma} package.  This has advantages over t-tests since it makes use of linear models and empirical Bayes methods in order to determine significant differentially expressed genes \cite{Smyth04}\cite{Smyth05}.  The starting point for analysis in \texttt{limma} is a matrix of expression values from \texttt{lumi} this is accessed via the \texttt{exprs} method provided by the core \texttt{Biobase} package of Bioconductor. 
+Whilst \texttt{lumi} handles the transformation, normalisation and quality control of Illumina microarray data, in order to obtain a list of differentially expressed genes you need to make use of the \texttt{limma} package.  This has advantages over standard $t$-tests since it makes use of linear models and empirical Bayes methods in order to determine significant differentially expressed genes\cite{Smyth04,Smyth05}. The starting point for analysis in \texttt{limma} is a matrix of expression values from \texttt{lumi} this is accessed via the \texttt{exprs} method provided by the core \texttt{Biobase} package of Bioconductor. 

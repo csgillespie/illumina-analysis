@@ -6,25 +6,39 @@ Bioconductor provides us with all the tools we need to go from raw data in a
 public repository to deriving novel conclusions about the function of groups of
 genes, via data quality control and detection of differentially expressed genes.
 We have only scratched the surface of the 671 packages available (at time of
-writing, see \url{http://bioconductor.org} for an up-to-date list). Import and
-processing of Affymetrix microarrays is provided by the \texttt{affy}\cite{affy}
-and \texttt{simpleaffy} packages\cite{Wilson15092005}. Other methods of
+writing, see http://bioconductor.org for an up-to-date list). Import and
+processing of Affymetrix microarrays is provided by the \texttt{affy}
+and \texttt{simpleaffy} packages\cite{affy,Wilson15092005,gillespie2010analysing}. Other methods of
 differential expression analysis are available, in packages such as
 \texttt{RankProd}\cite{Hong15112006}. Batch effects, systematic errors that can
 cause many problems with microarray analysis, can be dealt with using the
 methods available in the \texttt{sva} package\cite{Leek17012012}, especially
-\texttt{ComBat}\cite{Johnson01012007}. Bioconductor also doesn't just provide
+\texttt{ComBat}\cite{Johnson01012007}. Bioconductor also does not just provide
 packages for analysing expression microarrays, there is also extensive support
 for different types of arrays, such as methylation arrays, arrayCGH, SNP arrays
 etc. Beyond microarrays, there are also many packages for the analysis of
 proteomics data and latterly next-generation sequencing analysis. Coupled with
 generic packages for inferring biological meaning, and visualising large and
-complex datasets, Bioconductor is increasingly a `one-stop' solution for many
+complex datasets, Bioconductor is increasingly a \textit{one-stop} solution for many
 bioinformatics analyses.
 
 
 \subsection*{Acknowledgements}
 
-We'd like to thank Neil Perkins (Newcastle University) for the kind permission
+We would like to thank Neil Perkins (Newcastle University) for the kind permission
 to use his microarray data for this chapter.
+
+<<echo=FALSE, cache=FALSE, message=FALSE>>=
+source("http://bioconductor.org/biocLite.R")
+@
+
+\subsection*{Additional information}
+
+The R code used in this book chapter can be downloaded from the book chapter's webpage:
+\begin{center}
+https://github.com/csgillespie/illumina-analysis/
+\end{center}
+The chapter was constructed using R version \Sexpr{R.Version()$major}.\Sexpr{R.Version()$minor},
+Bioconductor version \Sexpr{biocVersion()} and the \texttt{knitr} package\cite{Xie2013}.
+
 
