@@ -29,7 +29,7 @@ install.packages("gplots")
 
 \noindent Table \ref{Cockell_t2} gives an overview of the packages used in this chapter. A text file of the R commands used can be found at
 \begin{center}
-https://github.com/csgillespie/illumina-analysis/
+\url{https://github.com/csgillespie/illumina-analysis/}
 \end{center}
 
 \begin{table}[t]
@@ -140,20 +140,20 @@ arrayQualityMetrics(expressionset=qc_data, outdir="qc")
 @
 \noindent You can view the output from the \texttt{arrayQualityMetrics} function at
 \begin{center}
-https://github.com/csgillespie/illumina-analysis/blob/master/qc/
+\url{https://github.com/csgillespie/illumina-analysis/blob/master/qc/}
 \end{center}
 To render the page in a web-browser, use the following link
 \begin{center}
-http://goo.gl/bksFR
+\url{http://goo.gl/bksFR}
 \end{center}
-Examining the \textit{distance between arrays} metric\footnote{https://raw.github.com/csgillespie/illumina-analysis/master/qc/outhm.png} and the principal component plot from the report (the latter figure is given in figure \ref{Cockell_f1}), strongly suggests that array twenty-three (\texttt{TF3TF4B}) is an outlier - so we will remove this array from any further analysis. We have to do this removal in the raw data, since the removal of any whole sample will effect our between-array normalisation, so this has to be repeated with the subset of twenty-three arrays that passed quality control:
+Examining the \textit{distance between arrays} metric\footnote{\url{https://raw.github.com/csgillespie/illumina-analysis/master/qc/outhm.png}} and the principal component plot from the report (the latter figure is given in figure \ref{Cockell_f1}), strongly suggests that array twenty-three (\texttt{TF3TF4B}) is an outlier - so we will remove this array from any further analysis. We have to do this removal in the raw data, since the removal of any whole sample will effect our between-array normalisation, so this has to be repeated with the subset of twenty-three arrays that passed quality control:
 <<SC_analysis_reload, warning=FALSE, results='hide', cache=TRUE>>=
 raw_data_post = raw_data[ ,-23]
 vst_data_post = lumiT(raw_data_post)
 rsn_data_post = lumiN(vst_data_post, method="rsn")
 qc_data_post = lumiQ(rsn_data_post)
 @
-\noindent The \textit{array intensity distributions}\footnote{https://github.com/csgillespie/illumina-analysis/raw/master/qc/outbox.pdf} (not shown) metric suggests that array eleven may also be an outlier, although in this case its variation from the other arrays is less convincing, so we will retain the array in the analysis.
+\noindent The \textit{array intensity distributions}\footnote{\url{https://github.com/csgillespie/illumina-analysis/raw/master/qc/outbox.pdf}} (not shown) metric suggests that array eleven may also be an outlier, although in this case its variation from the other arrays is less convincing, so we will retain the array in the analysis.
 
 Now that we can be confident the arrays we have retained are of sufficient quality, we want to ensure the probes we are analysing on those arrays also pass a stringent quality check. We begin by extracting the data matrix from the \texttt{LumiBatch} object:
 <<SC_analysis_sampleQC1, cache=TRUE, tidy=FALSE>>=

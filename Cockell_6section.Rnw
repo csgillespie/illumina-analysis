@@ -6,7 +6,7 @@ Bioconductor provides us with all the tools we need to go from raw data in a
 public repository to deriving novel conclusions about the function of groups of
 genes, via data quality control and detection of differentially expressed genes.
 We have only scratched the surface of the 671 packages available (at time of
-writing, see http://bioconductor.org for an up-to-date list). Import and
+writing, see \url{http://bioconductor.org}for an up-to-date list). Import and
 processing of Affymetrix microarrays is provided by the \texttt{affy}
 and \texttt{simpleaffy} packages\cite{affy,Wilson15092005,gillespie2010analysing}. Other methods of
 differential expression analysis are available, in packages such as
@@ -36,7 +36,7 @@ source("http://bioconductor.org/biocLite.R")
 
 The R code used in this book chapter can be downloaded from the book chapter's webpage:
 \begin{center}
-https://github.com/csgillespie/illumina-analysis/
+\url{https://github.com/csgillespie/illumina-analysis/}
 \end{center}
 The chapter was constructed using R version \Sexpr{R.Version()$major}.\Sexpr{R.Version()$minor},
 Bioconductor version \Sexpr{biocVersion()} and the \texttt{knitr} package\cite{Xie2013}.
