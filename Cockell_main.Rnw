@@ -1,18 +1,11 @@
 \documentclass[12pt,BCOR1mm,DIV18]{scrartcl}
 
-% -------------------------------------------------------------------------------
+
 
 \usepackage{cite} % Make references as [1-4], not [1,2,3,4]
 \usepackage{url}  % Formatting web addresses  
-%\usepackage{colors}
 
-\urlstyle{rm}
-\newcommand{\cc}{\texttt}
-\newcommand{\note}[1]{{\color{red}#1}}
-
-
-
-
+\usepackage[british]{babel}
 \usepackage{inputenc}
 \usepackage{amssymb}
 \usepackage{graphicx}
@@ -31,6 +24,8 @@
    linkcolor = DarkBlue,
    urlcolor = DarkGreen,
  }%
+\urlstyle{rm}
+\newcommand{\cc}{\texttt}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -38,7 +33,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 <<setup, include=FALSE, cache=FALSE>>=
 #options(replace.assign=TRUE,width=60)
-opts_chunk$set(fig.path='graphics/Cockell-', cache.path='cache/graphics-', fig.align='center', fig.height=3, tidy.opts=list(width.cutoff=60))
+opts_chunk$set(fig.path='knitr_graphics/Cockell-', cache.path='knitr_cache/graphics-', fig.align='center', fig.height=3, tidy.opts=list(width.cutoff=60))
 
 old_par = par(mfrow=c(1,1))
 options(width=60)
@@ -82,6 +77,8 @@ knit_theme$set("bw.css")
 \noindent $^1${\small Bioinformatics Support Unit,Newcastle University, Newcastle upon Tyne, UK.}\\
 $^2${\small School of Mathematics \& Statistics, Newcastle University, Newcastle upon Tyne, NE1 7RU, UK.}
 \end{center}
+
+
 
 
 \Sexpr{knit_child('Cockell_1section.Rnw')} %intro

@@ -68,7 +68,7 @@ tf4_table = topTable(fit2, coef="TF4 - Ctrl",
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{graphics/figure3-crop}
-\caption{Venn diagrams showing the number over overlapping genes between contrasts.}\label{Cockell_F3}
+\caption{Venn diagrams showing the number of overlapping genes between contrasts.}\label{Cockell_F3}
 \end{figure}
 
 <<cache=TRUE, tidy=FALSE>>=

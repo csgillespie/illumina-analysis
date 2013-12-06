@@ -39,3 +39,6 @@ data
 README.html
 illumina-analysis.Rproj
 Cockell_main-concordance.tex
+knitr.sty
+knitr_*
+auto
